@@ -113,17 +113,12 @@
 
     .hero-tag {
       display: inline-block;
-      background: var(--sun);
-      color: var(--ink);
-      font-size: 0.78rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.4rem 1rem;
-      border-radius: 100px;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--muted);
       margin-bottom: 1.8rem;
       width: fit-content;
-      border: 1.5px solid var(--ink);
       animation: fadeUp 0.8s ease both;
     }
 
@@ -186,39 +181,7 @@
       background: linear-gradient(to right, var(--cream) 0%, transparent 15%);
     }
 
-    /* ── MARQUEE ── */
-    .marquee-wrap {
-      border-top: 2px solid var(--ink);
-      border-bottom: 2px solid var(--ink);
-      background: var(--lavender);
-      overflow: hidden;
-      padding: 0.75rem 0;
-    }
 
-    .marquee-track {
-      display: flex;
-      gap: 3rem;
-      width: max-content;
-      animation: marquee 20s linear infinite;
-    }
-
-    .marquee-item {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: 1rem;
-      color: var(--cream);
-      white-space: nowrap;
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-    }
-
-    .marquee-item::after { content: '✦'; font-style: normal; color: var(--sun); }
-
-    @keyframes marquee {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
 
     /* ── SECTIONS ── */
     .section {
@@ -268,18 +231,16 @@
     }
 
     .original-card {
-      border: 2px solid var(--ink);
-      border-radius: 0.8rem;
+      border-radius: 0.4rem;
       overflow: hidden;
       background: var(--cream);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 3px 3px 0 var(--ink);
       cursor: pointer;
     }
 
     .original-card:hover {
-      transform: translate(-2px, -2px);
-      box-shadow: 5px 5px 0 var(--ink);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.10);
     }
 
     .original-img-wrap {
@@ -325,8 +286,7 @@
     }
 
     .original-info {
-      padding: 1rem 1.1rem;
-      border-top: 2px solid var(--ink);
+      padding: 1rem 0.4rem;
     }
 
     .original-title {
@@ -343,8 +303,15 @@
     }
 
     .original-price {
-      font-size: 0.95rem;
-      font-weight: 500;
+      font-size: 0.88rem;
+      font-weight: 400;
+      color: var(--muted);
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .original-card:hover .original-price {
+      opacity: 1;
     }
 
     /* placeholder painting */
@@ -371,18 +338,16 @@
     }
 
     .poster-card {
-      border: 2px solid var(--ink);
-      border-radius: 0.8rem;
+      border-radius: 0.4rem;
       overflow: hidden;
       background: var(--cream);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 3px 3px 0 var(--ink);
       cursor: pointer;
     }
 
     .poster-card:hover {
-      transform: translate(-2px, -2px);
-      box-shadow: 5px 5px 0 var(--ink);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.10);
     }
 
     .poster-img-wrap {
@@ -404,8 +369,7 @@
     }
 
     .poster-info {
-      padding: 1.1rem 1.2rem;
-      border-top: 2px solid var(--ink);
+      padding: 1.1rem 0.4rem;
     }
 
     .poster-title {
@@ -426,12 +390,9 @@
     }
 
     .poster-price {
-      background: var(--sun);
-      padding: 0.2rem 0.7rem;
-      border-radius: 100px;
       font-size: 0.88rem;
-      font-weight: 500;
-      border: 1.5px solid var(--ink);
+      font-weight: 400;
+      color: var(--muted);
     }
 
     /* ── CARDS GRID ── */
@@ -442,18 +403,16 @@
     }
 
     .card-item {
-      border: 2px solid var(--ink);
-      border-radius: 0.8rem;
+      border-radius: 0.4rem;
       overflow: hidden;
       background: var(--cream);
-      box-shadow: 3px 3px 0 var(--ink);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer;
     }
 
     .card-item:hover {
-      transform: translate(-2px, -2px);
-      box-shadow: 5px 5px 0 var(--ink);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.10);
     }
 
     .card-img-wrap {
@@ -469,8 +428,7 @@
     }
 
     .card-info {
-      padding: 0.8rem 0.9rem;
-      border-top: 2px solid var(--ink);
+      padding: 0.8rem 0.4rem;
     }
 
     .card-title {
@@ -673,12 +631,11 @@
   <!-- HERO -->
   <section class="hero">
     <div class="hero-left">
-      <span class="hero-tag">Akvarel kunst · Håndmalet</span>
+      <span class="hero-tag">Akvarelkunst · håndmalet med kærlighed</span>
       <h1>Art that <em>fills</em> your world with colour</h1>
       <p class="hero-desc">Original watercolour paintings, art prints, and greeting cards — each one full of light, joy, and the warmth of nature. Made by hand in Denmark.</p>
       <div class="hero-buttons">
-        <a href="#originals" class="btn btn-primary">See originals</a>
-        <a href="#posters" class="btn btn-secondary">Browse posters</a>
+        <a href="#originals" class="btn btn-primary">View my work ↓</a>
       </div>
     </div>
     <div class="hero-right">
@@ -691,23 +648,7 @@
     </div>
   </section>
 
-  <!-- MARQUEE -->
-  <div class="marquee-wrap">
-    <div class="marquee-track">
-      <span class="marquee-item">Original akvarel malerier</span>
-      <span class="marquee-item">Kunstplakater</span>
-      <span class="marquee-item">Lykønskningskort</span>
-      <span class="marquee-item">Sendes med omhu</span>
-      <span class="marquee-item">Håndmalet i Danmark</span>
-      <span class="marquee-item">Bestil en unik gave</span>
-      <span class="marquee-item">Original akvarel malerier</span>
-      <span class="marquee-item">Kunstplakater</span>
-      <span class="marquee-item">Lykønskningskort</span>
-      <span class="marquee-item">Sendes med omhu</span>
-      <span class="marquee-item">Håndmalet i Danmark</span>
-      <span class="marquee-item">Bestil en unik gave</span>
-    </div>
-  </div>
+
 
   <!-- ORIGINALS -->
   <section class="section" id="originals">
@@ -725,7 +666,6 @@
       <div class="original-card">
         <div class="original-img-wrap">
           <img src="images/2022_ABUNDANT_ADVENTURES.jpg" alt="Abundant Adventures">
-          <span class="available-badge">Available</span>
         </div>
         <div class="original-info">
           <div class="original-title">Abundant Adventures</div>
@@ -737,7 +677,6 @@
       <div class="original-card">
         <div class="original-img-wrap">
           <img src="images/Butterfly_Nectar.jpg" alt="Butterfly Nectar">
-          <span class="available-badge">Available</span>
         </div>
         <div class="original-info">
           <div class="original-title">Butterfly Nectar</div>
@@ -749,7 +688,6 @@
       <div class="original-card">
         <div class="original-img-wrap">
           <img src="images/Radiant_light.jpg" alt="Radiant Light">
-          <span class="available-badge">Available</span>
         </div>
         <div class="original-info">
           <div class="original-title">Radiant Light</div>
@@ -761,7 +699,6 @@
       <div class="original-card">
         <div class="original-img-wrap">
           <div class="placeholder-painting">Reminiscent of Summer<br><br>Foto kommer snart</div>
-          <span class="available-badge">Available</span>
         </div>
         <div class="original-info">
           <div class="original-title">Reminiscent of Summer</div>
@@ -773,7 +710,6 @@
       <div class="original-card">
         <div class="original-img-wrap">
           <img src="images/Song_of_the_Hills.jpg" alt="Song of the Hills">
-          <span class="available-badge">Available</span>
         </div>
         <div class="original-info">
           <div class="original-title">Song of the Hills</div>
@@ -785,7 +721,6 @@
       <div class="original-card">
         <div class="original-img-wrap">
           <div class="placeholder-painting">Summer Breeze<br><br>Foto kommer snart</div>
-          <span class="available-badge">Available</span>
         </div>
         <div class="original-info">
           <div class="original-title">Summer Breeze</div>
@@ -797,7 +732,6 @@
       <div class="original-card">
         <div class="original-img-wrap">
           <div class="placeholder-painting">Summer in Lazise<br><br>Foto kommer snart</div>
-          <span class="available-badge">Available</span>
         </div>
         <div class="original-info">
           <div class="original-title">Summer in Lazise</div>
@@ -809,7 +743,6 @@
       <div class="original-card">
         <div class="original-img-wrap">
           <div class="placeholder-painting">Konkylie studie #1<br><br>Foto kommer snart</div>
-          <span class="available-badge">Available</span>
         </div>
         <div class="original-info">
           <div class="original-title">Konkylie studie #1</div>
