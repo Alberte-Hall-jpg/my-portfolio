@@ -1,1 +1,810 @@
-My painting portfolio
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alberte Hall — Landscape Paintings</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sun: #F9C846;
+      --sky: #7EC8E3;
+      --grass: #6DBF67;
+      --earth: #C8704A;
+      --leaf: #2D6A4F;
+      --cream: #FDFAF4;
+      --ink: #1C1C1C;
+      --muted: #7a7060;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 3rem;
+      background: var(--cream);
+      border-bottom: 2px solid var(--ink);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--ink);
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      position: relative;
+      padding-bottom: 2px;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 2px;
+      background: var(--earth);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after { width: 100%; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 5rem 3rem 5rem 4rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: var(--sun);
+      color: var(--ink);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 100px;
+      margin-bottom: 1.8rem;
+      width: fit-content;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 5vw, 5rem);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.8s 0.15s ease both;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--earth);
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 420px;
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.8s 0.3s ease both;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      animation: fadeUp 0.8s 0.45s ease both;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 2rem;
+      border-radius: 100px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      border: 2px solid var(--ink);
+      transition: all 0.25s ease;
+    }
+
+    .btn-primary {
+      background: var(--ink);
+      color: var(--cream);
+    }
+
+    .btn-primary:hover {
+      background: var(--earth);
+      border-color: var(--earth);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--ink);
+    }
+
+    .btn-secondary:hover {
+      background: var(--sun);
+      border-color: var(--sun);
+    }
+
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+      background: var(--sky);
+    }
+
+    /* Decorative landscape illustration in hero */
+    .hero-illustration {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      inset: 0;
+    }
+
+    /* Floating badge */
+    .hero-badge {
+      position: absolute;
+      bottom: 3rem;
+      left: -2rem;
+      background: var(--sun);
+      border: 2px solid var(--ink);
+      border-radius: 1rem;
+      padding: 1.2rem 1.5rem;
+      z-index: 3;
+      animation: fadeUp 0.8s 0.6s ease both;
+      box-shadow: 4px 4px 0 var(--ink);
+    }
+
+    .hero-badge .number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .hero-badge .label {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 0.2rem;
+    }
+
+    /* ── MARQUEE ── */
+    .marquee-wrap {
+      border-top: 2px solid var(--ink);
+      border-bottom: 2px solid var(--ink);
+      background: var(--grass);
+      overflow: hidden;
+      padding: 0.8rem 0;
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 3rem;
+      width: max-content;
+      animation: marquee 18s linear infinite;
+    }
+
+    .marquee-item {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--cream);
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .marquee-item::after {
+      content: '✦';
+      font-style: normal;
+      color: var(--sun);
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ── GALLERY ── */
+    .gallery {
+      padding: 7rem 4rem;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-label {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--earth);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .painting-card {
+      position: relative;
+      border: 2px solid var(--ink);
+      border-radius: 1rem;
+      overflow: hidden;
+      background: #e8e0d0;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 4px 4px 0 var(--ink);
+    }
+
+    .painting-card:hover {
+      transform: translate(-3px, -3px);
+      box-shadow: 7px 7px 0 var(--ink);
+    }
+
+    .painting-card:nth-child(2) { margin-top: 2.5rem; }
+    .painting-card:nth-child(3) { margin-top: -1.5rem; }
+
+    .painting-img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      display: block;
+      background: linear-gradient(160deg, var(--sky) 0%, var(--grass) 60%, var(--earth) 100%);
+    }
+
+    /* Placeholder landscape inside card */
+    .painting-placeholder {
+      width: 100%;
+      aspect-ratio: 4/5;
+    }
+
+    .painting-info {
+      padding: 1.2rem 1.4rem;
+      border-top: 2px solid var(--ink);
+      background: var(--cream);
+    }
+
+    .painting-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .painting-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .painting-size {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .painting-price {
+      font-size: 1rem;
+      font-weight: 500;
+      background: var(--sun);
+      padding: 0.2rem 0.7rem;
+      border-radius: 100px;
+      border: 1.5px solid var(--ink);
+    }
+
+    /* ── ABOUT ── */
+    .about {
+      padding: 7rem 4rem;
+      background: var(--ink);
+      color: var(--cream);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    .about-image {
+      position: relative;
+    }
+
+    .about-img-box {
+      width: 100%;
+      aspect-ratio: 3/4;
+      border-radius: 1.5rem;
+      border: 2px solid rgba(255,255,255,0.15);
+      background: linear-gradient(135deg, var(--leaf) 0%, var(--sky) 100%);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .about-img-label {
+      position: absolute;
+      top: 1.5rem;
+      right: -1.5rem;
+      background: var(--sun);
+      color: var(--ink);
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1rem;
+      padding: 0.6rem 1.2rem;
+      border-radius: 100px;
+      border: 2px solid var(--ink);
+      box-shadow: 3px 3px 0 rgba(0,0,0,0.3);
+    }
+
+    .about-content .section-label { color: var(--sun); }
+
+    .about-content .section-title { color: var(--cream); margin-bottom: 1.5rem; }
+
+    .about-text {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: rgba(253,250,244,0.7);
+      margin-bottom: 2rem;
+    }
+
+    .about-stats {
+      display: flex;
+      gap: 2.5rem;
+    }
+
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--sun);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: rgba(253,250,244,0.5);
+      margin-top: 0.3rem;
+    }
+
+    /* ── CONTACT ── */
+    .contact {
+      padding: 7rem 4rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: start;
+    }
+
+    .contact-left .section-title { margin-bottom: 1rem; }
+
+    .contact-desc {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 0.8rem;
+      font-size: 0.95rem;
+    }
+
+    .contact-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--sun);
+      border: 2px solid var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .form-group label {
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      padding: 0.85rem 1rem;
+      border: 2px solid var(--ink);
+      border-radius: 0.6rem;
+      background: var(--cream);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--earth);
+      box-shadow: 3px 3px 0 var(--earth);
+    }
+
+    .form-group textarea { resize: vertical; min-height: 130px; }
+
+    .form-submit {
+      margin-top: 0.5rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 2px solid var(--ink);
+      padding: 2rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--cream);
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .footer-copy {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-right { height: 300px; }
+      .hero-left { padding: 3rem 1.5rem; }
+      .hero-badge { left: 1rem; bottom: 1rem; }
+      .gallery { padding: 4rem 1.5rem; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .painting-card:nth-child(2),
+      .painting-card:nth-child(3) { margin-top: 0; }
+      .about, .contact { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 3rem; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">Alberte Hall</div>
+    <ul class="nav-links">
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="btn btn-primary" style="padding: 0.6rem 1.4rem; font-size: 0.85rem;">Enquire</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <span class="hero-tag">Original landscape paintings</span>
+      <h1>Where nature <em>comes alive</em> on canvas</h1>
+      <p class="hero-desc">Hand-painted landscapes capturing the light, colour, and spirit of the natural world. Each piece is an original, made with love.</p>
+      <div class="hero-buttons">
+        <a href="#gallery" class="btn btn-primary">View paintings</a>
+        <a href="#contact" class="btn btn-secondary">Get in touch</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <!-- Decorative landscape SVG -->
+      <svg class="hero-illustration" viewBox="0 0 600 700" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <rect width="600" height="700" fill="#7EC8E3"/>
+        <!-- Sun -->
+        <circle cx="420" cy="160" r="70" fill="#F9C846" opacity="0.9"/>
+        <circle cx="420" cy="160" r="90" fill="#F9C846" opacity="0.2"/>
+        <!-- Clouds -->
+        <ellipse cx="120" cy="120" rx="80" ry="35" fill="white" opacity="0.7"/>
+        <ellipse cx="180" cy="105" rx="60" ry="28" fill="white" opacity="0.7"/>
+        <ellipse cx="60" cy="130" rx="50" ry="22" fill="white" opacity="0.5"/>
+        <ellipse cx="500" cy="80" rx="70" ry="30" fill="white" opacity="0.6"/>
+        <!-- Hills back -->
+        <ellipse cx="100" cy="520" rx="220" ry="160" fill="#2D6A4F"/>
+        <ellipse cx="500" cy="540" rx="200" ry="150" fill="#3A7D5B"/>
+        <!-- Hills mid -->
+        <ellipse cx="300" cy="560" rx="280" ry="140" fill="#6DBF67"/>
+        <!-- Ground -->
+        <rect x="0" y="580" width="600" height="120" fill="#C8704A"/>
+        <!-- Flowers -->
+        <circle cx="80" cy="575" r="8" fill="#F9C846"/>
+        <circle cx="150" cy="565" r="6" fill="#ff9eb5"/>
+        <circle cx="220" cy="570" r="7" fill="white"/>
+        <circle cx="380" cy="568" r="8" fill="#F9C846"/>
+        <circle cx="460" cy="572" r="6" fill="#ff9eb5"/>
+        <circle cx="530" cy="565" r="7" fill="white"/>
+        <!-- Tree -->
+        <rect x="288" y="440" width="24" height="140" fill="#5a3e28"/>
+        <ellipse cx="300" cy="400" rx="70" ry="80" fill="#2D6A4F"/>
+        <ellipse cx="260" cy="430" rx="50" ry="60" fill="#3A7D5B"/>
+        <ellipse cx="340" cy="425" rx="50" ry="65" fill="#4a9468"/>
+      </svg>
+
+      <!-- Floating info badge -->
+      <div class="hero-badge">
+        <div class="number">12+</div>
+        <div class="label">Originals available</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span class="marquee-item">Original oil paintings</span>
+      <span class="marquee-item">Landscape &amp; nature</span>
+      <span class="marquee-item">Commission a piece</span>
+      <span class="marquee-item">Ships worldwide</span>
+      <span class="marquee-item">Handmade with love</span>
+      <span class="marquee-item">Original oil paintings</span>
+      <span class="marquee-item">Landscape &amp; nature</span>
+      <span class="marquee-item">Commission a piece</span>
+      <span class="marquee-item">Ships worldwide</span>
+      <span class="marquee-item">Handmade with love</span>
+    </div>
+  </div>
+
+  <!-- GALLERY -->
+  <section class="gallery" id="gallery">
+    <div class="section-header">
+      <div>
+        <div class="section-label">Portfolio</div>
+        <h2 class="section-title">Recent paintings</h2>
+      </div>
+      <a href="#contact" class="btn btn-secondary">Commission a piece →</a>
+    </div>
+
+    <div class="gallery-grid">
+
+      <!-- Card 1 — replace src with your painting image -->
+      <div class="painting-card">
+        <svg class="painting-placeholder" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="500" fill="#a8d5e2"/>
+          <ellipse cx="200" cy="380" rx="240" ry="160" fill="#6DBF67"/>
+          <ellipse cx="60" cy="420" rx="120" ry="100" fill="#2D6A4F"/>
+          <circle cx="300" cy="120" r="55" fill="#F9C846" opacity="0.85"/>
+          <rect x="185" y="290" width="18" height="110" fill="#5a3e28"/>
+          <ellipse cx="194" cy="260" rx="55" ry="65" fill="#2D6A4F"/>
+          <text x="200" y="490" text-anchor="middle" font-family="Georgia" font-style="italic" font-size="13" fill="rgba(255,255,255,0.5)">Add your painting here</text>
+        </svg>
+        <div class="painting-info">
+          <div class="painting-title">Golden Hour Valley</div>
+          <div class="painting-meta">
+            <span class="painting-size">40 × 50 cm · Oil on canvas</span>
+            <span class="painting-price">€280</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="painting-card">
+        <svg class="painting-placeholder" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="500" fill="#c9e8f0"/>
+          <rect x="0" y="300" width="400" height="200" fill="#C8704A"/>
+          <ellipse cx="200" cy="310" rx="260" ry="80" fill="#6DBF67"/>
+          <ellipse cx="50" cy="330" rx="100" ry="60" fill="#4a9468"/>
+          <ellipse cx="360" cy="320" rx="90" ry="55" fill="#3A7D5B"/>
+          <circle cx="80" cy="100" r="40" fill="white" opacity="0.7"/>
+          <circle cx="140" cy="80" r="30" fill="white" opacity="0.6"/>
+          <circle cx="300" cy="90" r="50" fill="white" opacity="0.5"/>
+          <text x="200" y="490" text-anchor="middle" font-family="Georgia" font-style="italic" font-size="13" fill="rgba(255,255,255,0.5)">Add your painting here</text>
+        </svg>
+        <div class="painting-info">
+          <div class="painting-title">Meadow at Dusk</div>
+          <div class="painting-meta">
+            <span class="painting-size">30 × 40 cm · Acrylic</span>
+            <span class="painting-price">€190</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="painting-card">
+        <svg class="painting-placeholder" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="500" fill="#b8d4b8"/>
+          <rect x="0" y="350" width="400" height="150" fill="#5a3e28"/>
+          <ellipse cx="200" cy="360" rx="280" ry="100" fill="#2D6A4F"/>
+          <ellipse cx="100" cy="340" rx="150" ry="80" fill="#3A7D5B"/>
+          <ellipse cx="320" cy="345" rx="130" ry="75" fill="#4a9468"/>
+          <rect x="190" y="220" width="20" height="140" fill="#5a3e28"/>
+          <ellipse cx="200" cy="190" rx="65" ry="75" fill="#3A7D5B"/>
+          <circle cx="200" cy="80" r="35" fill="#F9C846" opacity="0.6"/>
+          <text x="200" y="490" text-anchor="middle" font-family="Georgia" font-style="italic" font-size="13" fill="rgba(255,255,255,0.5)">Add your painting here</text>
+        </svg>
+        <div class="painting-info">
+          <div class="painting-title">Forest Morning</div>
+          <div class="painting-meta">
+            <span class="painting-size">50 × 60 cm · Oil on canvas</span>
+            <span class="painting-price">€350</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-image">
+      <div class="about-img-box">
+        <!-- Replace with a photo of yourself or your studio -->
+        <svg width="100%" height="100%" viewBox="0 0 400 530" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="530" fill="#2D6A4F"/>
+          <ellipse cx="200" cy="420" rx="280" ry="180" fill="#1a4a38"/>
+          <rect x="160" y="200" width="80" height="220" fill="#5a3e28" rx="5"/>
+          <rect x="130" y="160" width="140" height="120" fill="#f9c846" rx="4"/>
+          <rect x="145" y="172" width="110" height="95" fill="#7EC8E3" rx="2"/>
+          <circle cx="200" cy="80" r="50" fill="#C8A882"/>
+          <text x="200" y="510" text-anchor="middle" font-family="Georgia" font-style="italic" font-size="13" fill="rgba(255,255,255,0.3)">Add your photo here</text>
+        </svg>
+      </div>
+      <div class="about-img-label">Painting since 2018</div>
+    </div>
+
+    <div class="about-content">
+      <div class="section-label">About the artist</div>
+      <h2 class="section-title">Hello, I'm Alberte</h2>
+      <p class="about-text">
+        I'm a landscape painter based in Denmark, inspired by the ever-changing light of Scandinavian nature — from golden summer meadows to misty autumn forests. Each painting is made by hand with care and intention.
+      </p>
+      <p class="about-text">
+        I paint primarily in oils and acrylics, and I also take commissions — so if you have a special place or memory you'd love to see captured on canvas, I'd love to hear from you.
+      </p>
+      <div class="about-stats">
+        <div>
+          <div class="stat-number">40+</div>
+          <div class="stat-label">Paintings sold</div>
+        </div>
+        <div>
+          <div class="stat-number">12</div>
+          <div class="stat-label">Available now</div>
+        </div>
+        <div>
+          <div class="stat-number">6yr</div>
+          <div class="stat-label">Painting experience</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="contact-left">
+      <div class="section-label">Get in touch</div>
+      <h2 class="section-title">Interested in a painting?</h2>
+      <p class="contact-desc">Whether you'd like to buy an existing piece, commission something personal, or just say hello — I'd love to hear from you.</p>
+      <div class="contact-detail">
+        <div class="contact-icon">✉</div>
+        <span>hello@albertehall.art</span>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-icon">📍</div>
+        <span>Copenhagen, Denmark</span>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-icon">🚚</div>
+        <span>Ships worldwide, carefully packaged</span>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <div class="form-group">
+        <label>Your name</label>
+        <input type="text" placeholder="e.g. Anna Jensen">
+      </div>
+      <div class="form-group">
+        <label>Email address</label>
+        <input type="email" placeholder="you@example.com">
+      </div>
+      <div class="form-group">
+        <label>I'm interested in</label>
+        <select>
+          <option>Buying an existing painting</option>
+          <option>Commissioning a custom piece</option>
+          <option>Just saying hello</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea placeholder="Tell me which painting caught your eye, or describe what you'd love commissioned..."></textarea>
+      </div>
+      <div class="form-submit">
+        <button class="btn btn-primary" style="width:100%; border:none; cursor:pointer; font-family:'DM Sans',sans-serif;">Send message →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Alberte Hall</div>
+    <div class="footer-copy">© 2026 Alberte Hall. All paintings are original works.</div>
+  </footer>
+
+</body>
+</html>
