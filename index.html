@@ -3,22 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alberte Hall — Landscape Paintings</title>
+  <title>Alberte Hall — Watercolour Art</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     :root {
       --sun: #F9C846;
-      --sky: #7EC8E3;
-      --grass: #6DBF67;
-      --earth: #C8704A;
-      --leaf: #2D6A4F;
+      --sky: #b8d4f0;
+      --lavender: #9b8ec4;
+      --coral: #E8744A;
+      --leaf: #4a8c6f;
       --cream: #FDFAF4;
       --ink: #1C1C1C;
       --muted: #7a7060;
+      --soft: #f3ede3;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
 
     body {
@@ -50,14 +50,14 @@
 
     .nav-links {
       display: flex;
-      gap: 2.5rem;
+      gap: 2rem;
       list-style: none;
     }
 
     .nav-links a {
       text-decoration: none;
       color: var(--ink);
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 500;
       letter-spacing: 0.05em;
       text-transform: uppercase;
@@ -70,11 +70,30 @@
       position: absolute;
       bottom: 0; left: 0;
       width: 0; height: 2px;
-      background: var(--earth);
+      background: var(--coral);
       transition: width 0.3s ease;
     }
 
     .nav-links a:hover::after { width: 100%; }
+
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.8rem;
+      border-radius: 100px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      border: 2px solid var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      transition: all 0.25s ease;
+    }
+
+    .btn-primary { background: var(--ink); color: var(--cream); }
+    .btn-primary:hover { background: var(--coral); border-color: var(--coral); }
+    .btn-secondary { background: transparent; color: var(--ink); }
+    .btn-secondary:hover { background: var(--sun); border-color: var(--sun); }
+    .btn-small { padding: 0.5rem 1.2rem; font-size: 0.82rem; }
 
     /* ── HERO ── */
     .hero {
@@ -82,7 +101,6 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       padding-top: 80px;
-      position: relative;
       overflow: hidden;
     }
 
@@ -91,8 +109,6 @@
       flex-direction: column;
       justify-content: center;
       padding: 5rem 3rem 5rem 4rem;
-      position: relative;
-      z-index: 2;
     }
 
     .hero-tag {
@@ -107,28 +123,26 @@
       border-radius: 100px;
       margin-bottom: 1.8rem;
       width: fit-content;
+      border: 1.5px solid var(--ink);
       animation: fadeUp 0.8s ease both;
     }
 
     .hero h1 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(3rem, 5vw, 5rem);
+      font-size: clamp(2.8rem, 4.5vw, 4.5rem);
       line-height: 1.08;
       letter-spacing: -0.03em;
       margin-bottom: 1.5rem;
       animation: fadeUp 0.8s 0.15s ease both;
     }
 
-    .hero h1 em {
-      font-style: italic;
-      color: var(--earth);
-    }
+    .hero h1 em { font-style: italic; color: var(--coral); }
 
     .hero-desc {
-      font-size: 1.05rem;
-      line-height: 1.7;
+      font-size: 1rem;
+      line-height: 1.75;
       color: var(--muted);
-      max-width: 420px;
+      max-width: 400px;
       margin-bottom: 2.5rem;
       animation: fadeUp 0.8s 0.3s ease both;
     }
@@ -136,102 +150,62 @@
     .hero-buttons {
       display: flex;
       gap: 1rem;
+      flex-wrap: wrap;
       animation: fadeUp 0.8s 0.45s ease both;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 0.9rem 2rem;
-      border-radius: 100px;
-      font-size: 0.95rem;
-      font-weight: 500;
-      text-decoration: none;
-      cursor: pointer;
-      border: 2px solid var(--ink);
-      transition: all 0.25s ease;
-    }
-
-    .btn-primary {
-      background: var(--ink);
-      color: var(--cream);
-    }
-
-    .btn-primary:hover {
-      background: var(--earth);
-      border-color: var(--earth);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      color: var(--ink);
-    }
-
-    .btn-secondary:hover {
-      background: var(--sun);
-      border-color: var(--sun);
     }
 
     .hero-right {
       position: relative;
+      background: #e8e0f0;
       overflow: hidden;
-      background: var(--sky);
     }
 
-    /* Decorative landscape illustration in hero */
-    .hero-illustration {
-      width: 100%;
-      height: 100%;
+    .hero-collage {
       position: absolute;
       inset: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 3px;
     }
 
-    /* Floating badge */
-    .hero-badge {
+    .hero-collage-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-collage-img:first-child {
+      grid-row: 1 / 3;
+    }
+
+    .hero-overlay {
       position: absolute;
-      bottom: 3rem;
-      left: -2rem;
-      background: var(--sun);
-      border: 2px solid var(--ink);
-      border-radius: 1rem;
-      padding: 1.2rem 1.5rem;
-      z-index: 3;
-      animation: fadeUp 0.8s 0.6s ease both;
-      box-shadow: 4px 4px 0 var(--ink);
-    }
-
-    .hero-badge .number {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      font-weight: 700;
-      line-height: 1;
-    }
-
-    .hero-badge .label {
-      font-size: 0.78rem;
-      color: var(--muted);
-      margin-top: 0.2rem;
+      inset: 0;
+      background: linear-gradient(to right, var(--cream) 0%, transparent 15%);
     }
 
     /* ── MARQUEE ── */
     .marquee-wrap {
       border-top: 2px solid var(--ink);
       border-bottom: 2px solid var(--ink);
-      background: var(--grass);
+      background: var(--lavender);
       overflow: hidden;
-      padding: 0.8rem 0;
+      padding: 0.75rem 0;
     }
 
     .marquee-track {
       display: flex;
       gap: 3rem;
       width: max-content;
-      animation: marquee 18s linear infinite;
+      animation: marquee 20s linear infinite;
     }
 
     .marquee-item {
       font-family: 'Playfair Display', serif;
       font-style: italic;
-      font-size: 1.1rem;
+      font-size: 1rem;
       color: var(--cream);
       white-space: nowrap;
       display: flex;
@@ -239,253 +213,394 @@
       gap: 1.5rem;
     }
 
-    .marquee-item::after {
-      content: '✦';
-      font-style: normal;
-      color: var(--sun);
-    }
+    .marquee-item::after { content: '✦'; font-style: normal; color: var(--sun); }
 
     @keyframes marquee {
       from { transform: translateX(0); }
       to { transform: translateX(-50%); }
     }
 
-    /* ── GALLERY ── */
-    .gallery {
-      padding: 7rem 4rem;
+    /* ── SECTIONS ── */
+    .section {
+      padding: 6rem 4rem;
     }
+
+    .section-alt { background: var(--soft); }
 
     .section-header {
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
-      margin-bottom: 3.5rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+      gap: 1rem;
     }
 
     .section-label {
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       font-weight: 500;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--earth);
-      margin-bottom: 0.6rem;
+      color: var(--coral);
+      margin-bottom: 0.5rem;
     }
 
     .section-title {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
       line-height: 1.1;
       letter-spacing: -0.02em;
     }
 
-    .gallery-grid {
+    .section-desc {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 500px;
+      margin-top: 0.6rem;
+    }
+
+    /* ── ORIGINALS GRID ── */
+    .originals-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.2rem;
+    }
+
+    .original-card {
+      border: 2px solid var(--ink);
+      border-radius: 0.8rem;
+      overflow: hidden;
+      background: var(--cream);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 3px 3px 0 var(--ink);
+      cursor: pointer;
+    }
+
+    .original-card:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 5px 5px 0 var(--ink);
+    }
+
+    .original-img-wrap {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: #e8e0f0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .original-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .sold-badge {
+      position: absolute;
+      top: 0.7rem;
+      right: 0.7rem;
+      background: var(--ink);
+      color: var(--cream);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      border-radius: 100px;
+    }
+
+    .available-badge {
+      position: absolute;
+      top: 0.7rem;
+      right: 0.7rem;
+      background: var(--leaf);
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      border-radius: 100px;
+    }
+
+    .original-info {
+      padding: 1rem 1.1rem;
+      border-top: 2px solid var(--ink);
+    }
+
+    .original-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95rem;
+      margin-bottom: 0.3rem;
+      line-height: 1.3;
+    }
+
+    .original-details {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .original-price {
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    /* placeholder painting */
+    .placeholder-painting {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 0.8rem;
+      color: rgba(100,80,120,0.4);
+      text-align: center;
+      padding: 1rem;
+      background: linear-gradient(135deg, #e8e0f0 0%, #d4cce8 100%);
+    }
+
+    /* ── POSTERS GRID ── */
+    .posters-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1.5rem;
     }
 
-    .painting-card {
-      position: relative;
+    .poster-card {
       border: 2px solid var(--ink);
-      border-radius: 1rem;
+      border-radius: 0.8rem;
       overflow: hidden;
-      background: #e8e0d0;
-      cursor: pointer;
+      background: var(--cream);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 4px 4px 0 var(--ink);
+      box-shadow: 3px 3px 0 var(--ink);
+      cursor: pointer;
     }
 
-    .painting-card:hover {
-      transform: translate(-3px, -3px);
-      box-shadow: 7px 7px 0 var(--ink);
+    .poster-card:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 5px 5px 0 var(--ink);
     }
 
-    .painting-card:nth-child(2) { margin-top: 2.5rem; }
-    .painting-card:nth-child(3) { margin-top: -1.5rem; }
-
-    .painting-img {
+    .poster-img-wrap {
       width: 100%;
-      aspect-ratio: 4/5;
+      aspect-ratio: 2/3;
+      overflow: hidden;
+    }
+
+    .poster-img-wrap img {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
       display: block;
-      background: linear-gradient(160deg, var(--sky) 0%, var(--grass) 60%, var(--earth) 100%);
+      transition: transform 0.4s ease;
     }
 
-    /* Placeholder landscape inside card */
-    .painting-placeholder {
-      width: 100%;
-      aspect-ratio: 4/5;
+    .poster-card:hover .poster-img-wrap img {
+      transform: scale(1.03);
     }
 
-    .painting-info {
-      padding: 1.2rem 1.4rem;
+    .poster-info {
+      padding: 1.1rem 1.2rem;
       border-top: 2px solid var(--ink);
-      background: var(--cream);
     }
 
-    .painting-title {
+    .poster-title {
       font-family: 'Playfair Display', serif;
-      font-size: 1.1rem;
+      font-size: 1rem;
       margin-bottom: 0.4rem;
     }
 
-    .painting-meta {
+    .poster-meta {
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    .painting-size {
-      font-size: 0.8rem;
+    .poster-size {
+      font-size: 0.78rem;
       color: var(--muted);
     }
 
-    .painting-price {
-      font-size: 1rem;
-      font-weight: 500;
+    .poster-price {
       background: var(--sun);
       padding: 0.2rem 0.7rem;
       border-radius: 100px;
+      font-size: 0.88rem;
+      font-weight: 500;
       border: 1.5px solid var(--ink);
+    }
+
+    /* ── CARDS GRID ── */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.2rem;
+    }
+
+    .card-item {
+      border: 2px solid var(--ink);
+      border-radius: 0.8rem;
+      overflow: hidden;
+      background: var(--cream);
+      box-shadow: 3px 3px 0 var(--ink);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .card-item:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 5px 5px 0 var(--ink);
+    }
+
+    .card-img-wrap {
+      width: 100%;
+      aspect-ratio: 1/1.4;
+      overflow: hidden;
+    }
+
+    .card-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card-info {
+      padding: 0.8rem 0.9rem;
+      border-top: 2px solid var(--ink);
+    }
+
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.85rem;
+      margin-bottom: 0.3rem;
+      line-height: 1.3;
+    }
+
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .card-note {
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    .card-price {
+      font-size: 0.85rem;
+      font-weight: 500;
     }
 
     /* ── ABOUT ── */
     .about {
-      padding: 7rem 4rem;
+      padding: 6rem 4rem;
       background: var(--ink);
       color: var(--cream);
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6rem;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
       align-items: center;
     }
 
-    .about-image {
-      position: relative;
-    }
-
     .about-img-box {
-      width: 100%;
       aspect-ratio: 3/4;
-      border-radius: 1.5rem;
+      border-radius: 1.2rem;
       border: 2px solid rgba(255,255,255,0.15);
-      background: linear-gradient(135deg, var(--leaf) 0%, var(--sky) 100%);
       overflow: hidden;
-      position: relative;
-    }
-
-    .about-img-label {
-      position: absolute;
-      top: 1.5rem;
-      right: -1.5rem;
-      background: var(--sun);
-      color: var(--ink);
+      background: linear-gradient(135deg, #4a3a6a 0%, #7b6fa0 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-family: 'Playfair Display', serif;
       font-style: italic;
-      font-size: 1rem;
-      padding: 0.6rem 1.2rem;
-      border-radius: 100px;
-      border: 2px solid var(--ink);
-      box-shadow: 3px 3px 0 rgba(0,0,0,0.3);
+      color: rgba(255,255,255,0.3);
+      font-size: 0.9rem;
+      text-align: center;
+      padding: 2rem;
     }
 
     .about-content .section-label { color: var(--sun); }
-
-    .about-content .section-title { color: var(--cream); margin-bottom: 1.5rem; }
+    .about-content .section-title { color: var(--cream); margin-bottom: 1.2rem; }
 
     .about-text {
       font-size: 1rem;
       line-height: 1.8;
       color: rgba(253,250,244,0.7);
-      margin-bottom: 2rem;
+      margin-bottom: 1.2rem;
     }
 
-    .about-stats {
-      display: flex;
-      gap: 2.5rem;
-    }
-
-    .stat-number {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: var(--sun);
-      line-height: 1;
-    }
-
-    .stat-label {
-      font-size: 0.8rem;
-      color: rgba(253,250,244,0.5);
-      margin-top: 0.3rem;
+    .about-medium {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 100px;
+      padding: 0.5rem 1.2rem;
+      font-size: 0.85rem;
+      margin-top: 0.5rem;
+      margin-right: 0.5rem;
     }
 
     /* ── CONTACT ── */
     .contact {
-      padding: 7rem 4rem;
+      padding: 6rem 4rem;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 6rem;
+      gap: 5rem;
       align-items: start;
     }
 
-    .contact-left .section-title { margin-bottom: 1rem; }
-
     .contact-desc {
-      font-size: 1rem;
-      line-height: 1.7;
+      font-size: 0.95rem;
+      line-height: 1.75;
       color: var(--muted);
-      margin-bottom: 2rem;
+      margin: 0.8rem 0 1.8rem;
     }
 
     .contact-detail {
       display: flex;
       align-items: center;
       gap: 0.8rem;
-      margin-bottom: 0.8rem;
-      font-size: 0.95rem;
+      margin-bottom: 0.7rem;
+      font-size: 0.92rem;
     }
 
     .contact-icon {
-      width: 36px;
-      height: 36px;
+      width: 34px; height: 34px;
       border-radius: 50%;
       background: var(--sun);
       border: 2px solid var(--ink);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.9rem;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem;
       flex-shrink: 0;
     }
 
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-    }
+    .contact-form { display: flex; flex-direction: column; gap: 1.1rem; }
 
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-    }
+    .form-group { display: flex; flex-direction: column; gap: 0.35rem; }
 
     .form-group label {
-      font-size: 0.82rem;
+      font-size: 0.78rem;
       font-weight: 500;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
     }
 
     .form-group input,
     .form-group textarea,
     .form-group select {
-      padding: 0.85rem 1rem;
+      padding: 0.8rem 1rem;
       border: 2px solid var(--ink);
       border-radius: 0.6rem;
       background: var(--cream);
       font-family: 'DM Sans', sans-serif;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       color: var(--ink);
       outline: none;
       transition: border-color 0.2s, box-shadow 0.2s;
@@ -494,24 +609,19 @@
     .form-group input:focus,
     .form-group textarea:focus,
     .form-group select:focus {
-      border-color: var(--earth);
-      box-shadow: 3px 3px 0 var(--earth);
+      border-color: var(--coral);
+      box-shadow: 3px 3px 0 var(--coral);
     }
 
-    .form-group textarea { resize: vertical; min-height: 130px; }
-
-    .form-submit {
-      margin-top: 0.5rem;
-    }
+    .form-group textarea { resize: vertical; min-height: 120px; }
 
     /* ── FOOTER ── */
     footer {
       border-top: 2px solid var(--ink);
-      padding: 2rem 4rem;
+      padding: 1.8rem 4rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: var(--cream);
     }
 
     .footer-logo {
@@ -520,31 +630,28 @@
       font-weight: 700;
     }
 
-    .footer-copy {
-      font-size: 0.82rem;
-      color: var(--muted);
-    }
+    .footer-copy { font-size: 0.8rem; color: var(--muted); }
 
     /* ── ANIMATIONS ── */
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
+      from { opacity: 0; transform: translateY(20px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
       nav { padding: 1rem 1.5rem; }
       .nav-links { display: none; }
-      .hero { grid-template-columns: 1fr; min-height: auto; }
-      .hero-right { height: 300px; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { height: 280px; }
       .hero-left { padding: 3rem 1.5rem; }
-      .hero-badge { left: 1rem; bottom: 1rem; }
-      .gallery { padding: 4rem 1.5rem; }
-      .gallery-grid { grid-template-columns: 1fr; }
-      .painting-card:nth-child(2),
-      .painting-card:nth-child(3) { margin-top: 0; }
-      .about, .contact { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 3rem; }
-      footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
+      .section { padding: 4rem 1.5rem; }
+      .originals-grid { grid-template-columns: repeat(2, 1fr); }
+      .posters-grid { grid-template-columns: repeat(2, 1fr); }
+      .cards-grid { grid-template-columns: repeat(2, 1fr); }
+      .about { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 3rem; }
+      .contact { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 3rem; }
+      footer { flex-direction: column; gap: 0.8rem; padding: 1.5rem; text-align: center; }
     }
   </style>
 </head>
@@ -554,154 +661,335 @@
   <nav>
     <div class="nav-logo">Alberte Hall</div>
     <ul class="nav-links">
-      <li><a href="#gallery">Gallery</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#originals">Originaler</a></li>
+      <li><a href="#posters">Plakater</a></li>
+      <li><a href="#cards">Kort</a></li>
+      <li><a href="#about">Om mig</a></li>
+      <li><a href="#contact">Kontakt</a></li>
     </ul>
-    <a href="#contact" class="btn btn-primary" style="padding: 0.6rem 1.4rem; font-size: 0.85rem;">Enquire</a>
+    <a href="#contact" class="btn btn-primary btn-small">Kontakt mig</a>
   </nav>
 
   <!-- HERO -->
   <section class="hero">
     <div class="hero-left">
-      <span class="hero-tag">Original landscape paintings</span>
-      <h1>Where nature <em>comes alive</em> on canvas</h1>
-      <p class="hero-desc">Hand-painted landscapes capturing the light, colour, and spirit of the natural world. Each piece is an original, made with love.</p>
+      <span class="hero-tag">Akvarel kunst · Håndmalet</span>
+      <h1>Art that <em>fills</em> your world with colour</h1>
+      <p class="hero-desc">Original watercolour paintings, art prints, and greeting cards — each one full of light, joy, and the warmth of nature. Made by hand in Denmark.</p>
       <div class="hero-buttons">
-        <a href="#gallery" class="btn btn-primary">View paintings</a>
-        <a href="#contact" class="btn btn-secondary">Get in touch</a>
+        <a href="#originals" class="btn btn-primary">See originals</a>
+        <a href="#posters" class="btn btn-secondary">Browse posters</a>
       </div>
     </div>
-
     <div class="hero-right">
-      <!-- Decorative landscape SVG -->
-      <svg class="hero-illustration" viewBox="0 0 600 700" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-        <rect width="600" height="700" fill="#7EC8E3"/>
-        <!-- Sun -->
-        <circle cx="420" cy="160" r="70" fill="#F9C846" opacity="0.9"/>
-        <circle cx="420" cy="160" r="90" fill="#F9C846" opacity="0.2"/>
-        <!-- Clouds -->
-        <ellipse cx="120" cy="120" rx="80" ry="35" fill="white" opacity="0.7"/>
-        <ellipse cx="180" cy="105" rx="60" ry="28" fill="white" opacity="0.7"/>
-        <ellipse cx="60" cy="130" rx="50" ry="22" fill="white" opacity="0.5"/>
-        <ellipse cx="500" cy="80" rx="70" ry="30" fill="white" opacity="0.6"/>
-        <!-- Hills back -->
-        <ellipse cx="100" cy="520" rx="220" ry="160" fill="#2D6A4F"/>
-        <ellipse cx="500" cy="540" rx="200" ry="150" fill="#3A7D5B"/>
-        <!-- Hills mid -->
-        <ellipse cx="300" cy="560" rx="280" ry="140" fill="#6DBF67"/>
-        <!-- Ground -->
-        <rect x="0" y="580" width="600" height="120" fill="#C8704A"/>
-        <!-- Flowers -->
-        <circle cx="80" cy="575" r="8" fill="#F9C846"/>
-        <circle cx="150" cy="565" r="6" fill="#ff9eb5"/>
-        <circle cx="220" cy="570" r="7" fill="white"/>
-        <circle cx="380" cy="568" r="8" fill="#F9C846"/>
-        <circle cx="460" cy="572" r="6" fill="#ff9eb5"/>
-        <circle cx="530" cy="565" r="7" fill="white"/>
-        <!-- Tree -->
-        <rect x="288" y="440" width="24" height="140" fill="#5a3e28"/>
-        <ellipse cx="300" cy="400" rx="70" ry="80" fill="#2D6A4F"/>
-        <ellipse cx="260" cy="430" rx="50" ry="60" fill="#3A7D5B"/>
-        <ellipse cx="340" cy="425" rx="50" ry="65" fill="#4a9468"/>
-      </svg>
-
-      <!-- Floating info badge -->
-      <div class="hero-badge">
-        <div class="number">12+</div>
-        <div class="label">Originals available</div>
+      <div class="hero-collage">
+        <img class="hero-collage-img" src="images/Song_of_the_Hills.jpg" alt="Song of the Hills">
+        <img class="hero-collage-img" src="images/Butterfly_Nectar.jpg" alt="Butterfly Nectar">
+        <img class="hero-collage-img" src="images/Radiant_light.jpg" alt="Radiant Light">
       </div>
+      <div class="hero-overlay"></div>
     </div>
   </section>
 
   <!-- MARQUEE -->
   <div class="marquee-wrap">
     <div class="marquee-track">
-      <span class="marquee-item">Original oil paintings</span>
-      <span class="marquee-item">Landscape &amp; nature</span>
-      <span class="marquee-item">Commission a piece</span>
-      <span class="marquee-item">Ships worldwide</span>
-      <span class="marquee-item">Handmade with love</span>
-      <span class="marquee-item">Original oil paintings</span>
-      <span class="marquee-item">Landscape &amp; nature</span>
-      <span class="marquee-item">Commission a piece</span>
-      <span class="marquee-item">Ships worldwide</span>
-      <span class="marquee-item">Handmade with love</span>
+      <span class="marquee-item">Original akvarel malerier</span>
+      <span class="marquee-item">Kunstplakater</span>
+      <span class="marquee-item">Lykønskningskort</span>
+      <span class="marquee-item">Sendes med omhu</span>
+      <span class="marquee-item">Håndmalet i Danmark</span>
+      <span class="marquee-item">Bestil en unik gave</span>
+      <span class="marquee-item">Original akvarel malerier</span>
+      <span class="marquee-item">Kunstplakater</span>
+      <span class="marquee-item">Lykønskningskort</span>
+      <span class="marquee-item">Sendes med omhu</span>
+      <span class="marquee-item">Håndmalet i Danmark</span>
+      <span class="marquee-item">Bestil en unik gave</span>
     </div>
   </div>
 
-  <!-- GALLERY -->
-  <section class="gallery" id="gallery">
+  <!-- ORIGINALS -->
+  <section class="section" id="originals">
     <div class="section-header">
       <div>
-        <div class="section-label">Portfolio</div>
-        <h2 class="section-title">Recent paintings</h2>
+        <div class="section-label">Unikke værker</div>
+        <h2 class="section-title">Original malerier</h2>
+        <p class="section-desc">Each painting is a one-of-a-kind original watercolour. Once it's gone, it's gone — these are never reprinted.</p>
       </div>
-      <a href="#contact" class="btn btn-secondary">Commission a piece →</a>
+      <a href="#contact" class="btn btn-secondary">Enquire about a piece</a>
     </div>
 
-    <div class="gallery-grid">
+    <div class="originals-grid">
 
-      <!-- Card 1 — replace src with your painting image -->
-      <div class="painting-card">
-        <svg class="painting-placeholder" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
-          <rect width="400" height="500" fill="#a8d5e2"/>
-          <ellipse cx="200" cy="380" rx="240" ry="160" fill="#6DBF67"/>
-          <ellipse cx="60" cy="420" rx="120" ry="100" fill="#2D6A4F"/>
-          <circle cx="300" cy="120" r="55" fill="#F9C846" opacity="0.85"/>
-          <rect x="185" y="290" width="18" height="110" fill="#5a3e28"/>
-          <ellipse cx="194" cy="260" rx="55" ry="65" fill="#2D6A4F"/>
-          <text x="200" y="490" text-anchor="middle" font-family="Georgia" font-style="italic" font-size="13" fill="rgba(255,255,255,0.5)">Add your painting here</text>
-        </svg>
-        <div class="painting-info">
-          <div class="painting-title">Golden Hour Valley</div>
-          <div class="painting-meta">
-            <span class="painting-size">40 × 50 cm · Oil on canvas</span>
-            <span class="painting-price">€280</span>
+      <div class="original-card">
+        <div class="original-img-wrap">
+          <img src="images/2022_ABUNDANT_ADVENTURES.jpg" alt="Abundant Adventures">
+          <span class="available-badge">Available</span>
+        </div>
+        <div class="original-info">
+          <div class="original-title">Abundant Adventures</div>
+          <div class="original-details">290 × 210 mm · Akvarel</div>
+          <div class="original-price">7.500 kr</div>
+        </div>
+      </div>
+
+      <div class="original-card">
+        <div class="original-img-wrap">
+          <img src="images/Butterfly_Nectar.jpg" alt="Butterfly Nectar">
+          <span class="available-badge">Available</span>
+        </div>
+        <div class="original-info">
+          <div class="original-title">Butterfly Nectar</div>
+          <div class="original-details">145 × 205 mm · Akvarel</div>
+          <div class="original-price">1.500 kr</div>
+        </div>
+      </div>
+
+      <div class="original-card">
+        <div class="original-img-wrap">
+          <img src="images/Radiant_light.jpg" alt="Radiant Light">
+          <span class="available-badge">Available</span>
+        </div>
+        <div class="original-info">
+          <div class="original-title">Radiant Light</div>
+          <div class="original-details">145 × 205 mm · Akvarel</div>
+          <div class="original-price">1.500 kr</div>
+        </div>
+      </div>
+
+      <div class="original-card">
+        <div class="original-img-wrap">
+          <div class="placeholder-painting">Reminiscent of Summer<br><br>Foto kommer snart</div>
+          <span class="available-badge">Available</span>
+        </div>
+        <div class="original-info">
+          <div class="original-title">Reminiscent of Summer</div>
+          <div class="original-details">~260 × 180 mm · Akvarel</div>
+          <div class="original-price">3.000 kr</div>
+        </div>
+      </div>
+
+      <div class="original-card">
+        <div class="original-img-wrap">
+          <img src="images/Song_of_the_Hills.jpg" alt="Song of the Hills">
+          <span class="available-badge">Available</span>
+        </div>
+        <div class="original-info">
+          <div class="original-title">Song of the Hills</div>
+          <div class="original-details">145 × 205 mm · Akvarel</div>
+          <div class="original-price">1.500 kr</div>
+        </div>
+      </div>
+
+      <div class="original-card">
+        <div class="original-img-wrap">
+          <div class="placeholder-painting">Summer Breeze<br><br>Foto kommer snart</div>
+          <span class="available-badge">Available</span>
+        </div>
+        <div class="original-info">
+          <div class="original-title">Summer Breeze</div>
+          <div class="original-details">550 × 700 mm · Akvarel</div>
+          <div class="original-price">5.000 kr</div>
+        </div>
+      </div>
+
+      <div class="original-card">
+        <div class="original-img-wrap">
+          <div class="placeholder-painting">Summer in Lazise<br><br>Foto kommer snart</div>
+          <span class="available-badge">Available</span>
+        </div>
+        <div class="original-info">
+          <div class="original-title">Summer in Lazise</div>
+          <div class="original-details">290 × 210 mm · Akvarel</div>
+          <div class="original-price">3.000 kr</div>
+        </div>
+      </div>
+
+      <div class="original-card">
+        <div class="original-img-wrap">
+          <div class="placeholder-painting">Konkylie studie #1<br><br>Foto kommer snart</div>
+          <span class="available-badge">Available</span>
+        </div>
+        <div class="original-info">
+          <div class="original-title">Konkylie studie #1</div>
+          <div class="original-details">200 × 200 mm · Akvarel</div>
+          <div class="original-price">2.000 kr</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- POSTERS -->
+  <section class="section section-alt" id="posters">
+    <div class="section-header">
+      <div>
+        <div class="section-label">Kunsttryk</div>
+        <h2 class="section-title">Plakater</h2>
+        <p class="section-desc">High-quality art prints of original paintings. A3 format (420 × 290 mm), printed and shipped with care. Perfect for brightening any space.</p>
+      </div>
+      <a href="#contact" class="btn btn-secondary">Order a poster</a>
+    </div>
+
+    <div class="posters-grid">
+
+      <div class="poster-card">
+        <div class="poster-img-wrap">
+          <img src="images/2022_ABUNDANT_ADVENTURES.jpg" alt="Abundant Adventures poster">
+        </div>
+        <div class="poster-info">
+          <div class="poster-title">Abundant Adventures</div>
+          <div class="poster-meta">
+            <span class="poster-size">A3 · 420 × 290 mm</span>
+            <span class="poster-price">250 kr</span>
           </div>
         </div>
       </div>
 
-      <!-- Card 2 -->
-      <div class="painting-card">
-        <svg class="painting-placeholder" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
-          <rect width="400" height="500" fill="#c9e8f0"/>
-          <rect x="0" y="300" width="400" height="200" fill="#C8704A"/>
-          <ellipse cx="200" cy="310" rx="260" ry="80" fill="#6DBF67"/>
-          <ellipse cx="50" cy="330" rx="100" ry="60" fill="#4a9468"/>
-          <ellipse cx="360" cy="320" rx="90" ry="55" fill="#3A7D5B"/>
-          <circle cx="80" cy="100" r="40" fill="white" opacity="0.7"/>
-          <circle cx="140" cy="80" r="30" fill="white" opacity="0.6"/>
-          <circle cx="300" cy="90" r="50" fill="white" opacity="0.5"/>
-          <text x="200" y="490" text-anchor="middle" font-family="Georgia" font-style="italic" font-size="13" fill="rgba(255,255,255,0.5)">Add your painting here</text>
-        </svg>
-        <div class="painting-info">
-          <div class="painting-title">Meadow at Dusk</div>
-          <div class="painting-meta">
-            <span class="painting-size">30 × 40 cm · Acrylic</span>
-            <span class="painting-price">€190</span>
+      <div class="poster-card">
+        <div class="poster-img-wrap">
+          <img src="images/Butterfly_Nectar.jpg" alt="Butterfly Nectar poster">
+        </div>
+        <div class="poster-info">
+          <div class="poster-title">Butterfly Nectar</div>
+          <div class="poster-meta">
+            <span class="poster-size">A3 · 420 × 290 mm</span>
+            <span class="poster-price">250 kr</span>
           </div>
         </div>
       </div>
 
-      <!-- Card 3 -->
-      <div class="painting-card">
-        <svg class="painting-placeholder" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
-          <rect width="400" height="500" fill="#b8d4b8"/>
-          <rect x="0" y="350" width="400" height="150" fill="#5a3e28"/>
-          <ellipse cx="200" cy="360" rx="280" ry="100" fill="#2D6A4F"/>
-          <ellipse cx="100" cy="340" rx="150" ry="80" fill="#3A7D5B"/>
-          <ellipse cx="320" cy="345" rx="130" ry="75" fill="#4a9468"/>
-          <rect x="190" y="220" width="20" height="140" fill="#5a3e28"/>
-          <ellipse cx="200" cy="190" rx="65" ry="75" fill="#3A7D5B"/>
-          <circle cx="200" cy="80" r="35" fill="#F9C846" opacity="0.6"/>
-          <text x="200" y="490" text-anchor="middle" font-family="Georgia" font-style="italic" font-size="13" fill="rgba(255,255,255,0.5)">Add your painting here</text>
-        </svg>
-        <div class="painting-info">
-          <div class="painting-title">Forest Morning</div>
-          <div class="painting-meta">
-            <span class="painting-size">50 × 60 cm · Oil on canvas</span>
-            <span class="painting-price">€350</span>
+      <div class="poster-card">
+        <div class="poster-img-wrap">
+          <img src="images/Radiant_light.jpg" alt="Radiant Light poster">
+        </div>
+        <div class="poster-info">
+          <div class="poster-title">Radiant Light</div>
+          <div class="poster-meta">
+            <span class="poster-size">A3 · 420 × 290 mm</span>
+            <span class="poster-price">250 kr</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="poster-card">
+        <div class="poster-img-wrap">
+          <!-- Reminiscent of Summer — use jpg when available, PDF not usable directly -->
+          <div class="placeholder-painting" style="aspect-ratio:2/3; height:100%;">Reminiscent of Summer<br><br>Billede kommer snart</div>
+        </div>
+        <div class="poster-info">
+          <div class="poster-title">Reminiscent of Summer</div>
+          <div class="poster-meta">
+            <span class="poster-size">A3 · 420 × 290 mm</span>
+            <span class="poster-price">250 kr</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="poster-card">
+        <div class="poster-img-wrap">
+          <img src="images/Song_of_the_Hills.jpg" alt="Song of the Hills poster">
+        </div>
+        <div class="poster-info">
+          <div class="poster-title">Song of the Hills</div>
+          <div class="poster-meta">
+            <span class="poster-size">A3 · 420 × 290 mm</span>
+            <span class="poster-price">250 kr</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="poster-card">
+        <div class="poster-img-wrap">
+          <div class="placeholder-painting" style="height:100%;">Summer in Lazise<br><br>Billede kommer snart</div>
+        </div>
+        <div class="poster-info">
+          <div class="poster-title">Summer in Lazise</div>
+          <div class="poster-meta">
+            <span class="poster-size">A3 · 420 × 290 mm</span>
+            <span class="poster-price">250 kr</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- GREETING CARDS -->
+  <section class="section" id="cards">
+    <div class="section-header">
+      <div>
+        <div class="section-label">Lykønskningskort</div>
+        <h2 class="section-title">Greeting cards</h2>
+        <p class="section-desc">A5 cards (105 × 148 mm) featuring original artwork. Blank inside, perfect for any occasion. Some designs sold as sets.</p>
+      </div>
+      <a href="#contact" class="btn btn-secondary">Order cards</a>
+    </div>
+
+    <div class="cards-grid">
+
+      <div class="card-item">
+        <div class="card-img-wrap">
+          <div class="placeholder-painting">Abundant Mushrooms</div>
+        </div>
+        <div class="card-info">
+          <div class="card-title">Abundant Mushrooms</div>
+          <div class="card-meta">
+            <span class="card-note">Sæt · blank inside</span>
+            <span class="card-price">75 kr</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-item">
+        <div class="card-img-wrap">
+          <div class="placeholder-painting">Notes of Purple</div>
+        </div>
+        <div class="card-info">
+          <div class="card-title">Notes of Purple</div>
+          <div class="card-meta">
+            <span class="card-note">Sæt · blank inside</span>
+            <span class="card-price">75 kr</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-item">
+        <div class="card-img-wrap">
+          <img src="images/Butterfly_Nectar.jpg" alt="Butterfly Nectar card">
+        </div>
+        <div class="card-info">
+          <div class="card-title">Butterfly Nectar</div>
+          <div class="card-meta">
+            <span class="card-note">Enkelt · blank inside</span>
+            <span class="card-price">30 kr</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-item">
+        <div class="card-img-wrap">
+          <img src="images/Radiant_light.jpg" alt="Radiant Light card">
+        </div>
+        <div class="card-info">
+          <div class="card-title">Radiant Light</div>
+          <div class="card-meta">
+            <span class="card-note">Enkelt · blank inside</span>
+            <span class="card-price">30 kr</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-item">
+        <div class="card-img-wrap">
+          <img src="images/Song_of_the_Hills.jpg" alt="Song of the Hills card">
+        </div>
+        <div class="card-info">
+          <div class="card-title">Song of the Hills</div>
+          <div class="card-meta">
+            <span class="card-note">Enkelt · blank inside</span>
+            <span class="card-price">30 kr</span>
           </div>
         </div>
       </div>
@@ -711,44 +999,22 @@
 
   <!-- ABOUT -->
   <section class="about" id="about">
-    <div class="about-image">
-      <div class="about-img-box">
-        <!-- Replace with a photo of yourself or your studio -->
-        <svg width="100%" height="100%" viewBox="0 0 400 530" xmlns="http://www.w3.org/2000/svg">
-          <rect width="400" height="530" fill="#2D6A4F"/>
-          <ellipse cx="200" cy="420" rx="280" ry="180" fill="#1a4a38"/>
-          <rect x="160" y="200" width="80" height="220" fill="#5a3e28" rx="5"/>
-          <rect x="130" y="160" width="140" height="120" fill="#f9c846" rx="4"/>
-          <rect x="145" y="172" width="110" height="95" fill="#7EC8E3" rx="2"/>
-          <circle cx="200" cy="80" r="50" fill="#C8A882"/>
-          <text x="200" y="510" text-anchor="middle" font-family="Georgia" font-style="italic" font-size="13" fill="rgba(255,255,255,0.3)">Add your photo here</text>
-        </svg>
-      </div>
-      <div class="about-img-label">Painting since 2018</div>
+    <div class="about-img-box">
+      Add a photo of yourself or your studio here
     </div>
-
     <div class="about-content">
-      <div class="section-label">About the artist</div>
-      <h2 class="section-title">Hello, I'm Alberte</h2>
+      <div class="section-label">Om kunstneren</div>
+      <h2 class="section-title">Hej, jeg er Alberte</h2>
       <p class="about-text">
-        I'm a landscape painter based in Denmark, inspired by the ever-changing light of Scandinavian nature — from golden summer meadows to misty autumn forests. Each painting is made by hand with care and intention.
+        I'm a watercolour artist based in Denmark, drawn to the colours, light, and energy found in nature and everyday beauty. My paintings are loose, vivid, and full of life — I love the way watercolour moves and surprises you.
       </p>
       <p class="about-text">
-        I paint primarily in oils and acrylics, and I also take commissions — so if you have a special place or memory you'd love to see captured on canvas, I'd love to hear from you.
+        Each piece is painted by hand and made with genuine care. Whether you're looking for an original, a print for your wall, or a card for someone special — I hope my art brings a little more colour into your day.
       </p>
-      <div class="about-stats">
-        <div>
-          <div class="stat-number">40+</div>
-          <div class="stat-label">Paintings sold</div>
-        </div>
-        <div>
-          <div class="stat-number">12</div>
-          <div class="stat-label">Available now</div>
-        </div>
-        <div>
-          <div class="stat-number">6yr</div>
-          <div class="stat-label">Painting experience</div>
-        </div>
+      <div>
+        <span class="about-medium">🎨 Akvarel på papir</span>
+        <span class="about-medium">🇩🇰 Baseret i Danmark</span>
+        <span class="about-medium">📦 Sendes med omhu</span>
       </div>
     </div>
   </section>
@@ -756,54 +1022,54 @@
   <!-- CONTACT -->
   <section class="contact" id="contact">
     <div class="contact-left">
-      <div class="section-label">Get in touch</div>
-      <h2 class="section-title">Interested in a painting?</h2>
-      <p class="contact-desc">Whether you'd like to buy an existing piece, commission something personal, or just say hello — I'd love to hear from you.</p>
+      <div class="section-label">Kom i kontakt</div>
+      <h2 class="section-title">Interested in a piece?</h2>
+      <p class="contact-desc">Whether you'd like to buy an original, order a poster or cards, or ask about a commission — I'd love to hear from you. I'll get back to you as soon as possible.</p>
       <div class="contact-detail">
         <div class="contact-icon">✉</div>
         <span>hello@albertehall.art</span>
       </div>
       <div class="contact-detail">
         <div class="contact-icon">📍</div>
-        <span>Copenhagen, Denmark</span>
+        <span>Danmark</span>
       </div>
       <div class="contact-detail">
-        <div class="contact-icon">🚚</div>
-        <span>Ships worldwide, carefully packaged</span>
+        <div class="contact-icon">📦</div>
+        <span>Sender til hele verden</span>
       </div>
     </div>
 
     <div class="contact-form">
       <div class="form-group">
-        <label>Your name</label>
-        <input type="text" placeholder="e.g. Anna Jensen">
+        <label>Dit navn</label>
+        <input type="text" placeholder="f.eks. Anna Jensen">
       </div>
       <div class="form-group">
-        <label>Email address</label>
-        <input type="email" placeholder="you@example.com">
+        <label>Email</label>
+        <input type="email" placeholder="du@example.com">
       </div>
       <div class="form-group">
-        <label>I'm interested in</label>
+        <label>Jeg er interesseret i</label>
         <select>
-          <option>Buying an existing painting</option>
-          <option>Commissioning a custom piece</option>
-          <option>Just saying hello</option>
+          <option>Et originalt maleri</option>
+          <option>En plakat</option>
+          <option>Lykønskningskort</option>
+          <option>Flere ting</option>
+          <option>Bare at sige hej</option>
         </select>
       </div>
       <div class="form-group">
-        <label>Message</label>
-        <textarea placeholder="Tell me which painting caught your eye, or describe what you'd love commissioned..."></textarea>
+        <label>Besked</label>
+        <textarea placeholder="Fortæl mig hvilke(t) værk du er interesseret i, eller hvad du ønsker..."></textarea>
       </div>
-      <div class="form-submit">
-        <button class="btn btn-primary" style="width:100%; border:none; cursor:pointer; font-family:'DM Sans',sans-serif;">Send message →</button>
-      </div>
+      <button class="btn btn-primary" style="width:100%; border:none; cursor:pointer; font-family:'DM Sans',sans-serif; padding:0.9rem;">Send besked →</button>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
     <div class="footer-logo">Alberte Hall</div>
-    <div class="footer-copy">© 2026 Alberte Hall. All paintings are original works.</div>
+    <div class="footer-copy">© 2026 Alberte Hall · Alle malerier er originale værker</div>
   </footer>
 
 </body>
