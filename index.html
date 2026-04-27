@@ -427,6 +427,33 @@
       object-fit: cover;
     }
 
+    /* Hover image swap for set cards */
+    .card-img-hover {
+      position: relative;
+    }
+
+    .card-img-hover .card-img-main,
+    .card-img-hover .card-img-peek {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 0.4s ease;
+    }
+
+    .card-img-hover .card-img-peek {
+      opacity: 0;
+    }
+
+    .card-item:hover .card-img-hover .card-img-main {
+      opacity: 0;
+    }
+
+    .card-item:hover .card-img-hover .card-img-peek {
+      opacity: 1;
+    }
+
     .card-info {
       padding: 0.8rem 0.4rem;
     }
@@ -863,8 +890,9 @@
     <div class="cards-grid">
 
       <div class="card-item">
-        <div class="card-img-wrap">
-          <div class="placeholder-painting">Abundant Mushrooms</div>
+        <div class="card-img-wrap card-img-hover">
+          <img class="card-img-main" src="images/greeting_cards/Abundant_mushrooms_set.JPG" alt="Abundant Mushrooms sæt">
+          <img class="card-img-peek" src="images/greeting_cards/Abundant_1.jpeg" alt="Abundant Mushrooms nærbillede">
         </div>
         <div class="card-info">
           <div class="card-title">Abundant Mushrooms</div>
@@ -877,7 +905,7 @@
 
       <div class="card-item">
         <div class="card-img-wrap">
-          <div class="placeholder-painting">Notes of Purple</div>
+          <img src="images/greeting_cards/Notes_of_purple_set.JPG" alt="Notes of Purple sæt">
         </div>
         <div class="card-info">
           <div class="card-title">Notes of Purple</div>
@@ -890,7 +918,7 @@
 
       <div class="card-item">
         <div class="card-img-wrap">
-          <img src="images/Butterfly_Nectar.jpg" alt="Butterfly Nectar card">
+          <img src="images/greeting_cards/Butterfly_nectar.jpeg" alt="Butterfly Nectar kort">
         </div>
         <div class="card-info">
           <div class="card-title">Butterfly Nectar</div>
@@ -903,7 +931,7 @@
 
       <div class="card-item">
         <div class="card-img-wrap">
-          <img src="images/Radiant_light.jpg" alt="Radiant Light card">
+          <img src="images/greeting_cards/Radiant_light.jpeg" alt="Radiant Light kort">
         </div>
         <div class="card-info">
           <div class="card-title">Radiant Light</div>
@@ -916,7 +944,7 @@
 
       <div class="card-item">
         <div class="card-img-wrap">
-          <img src="images/Song_of_the_Hills.jpg" alt="Song of the Hills card">
+          <img src="images/greeting_cards/Song_of_the_hills.jpeg" alt="Song of the Hills kort">
         </div>
         <div class="card-info">
           <div class="card-title">Song of the Hills</div>
