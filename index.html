@@ -181,21 +181,17 @@
     .originals-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 1.2rem;
+      gap: 3rem;
     }
 
     .original-card {
-      border-radius: 0.4rem;
-      overflow: hidden;
-      background: var(--cream);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: transparent;
+      transition: transform 0.3s ease;
       cursor: pointer;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
     }
 
     .original-card:hover {
       transform: translateY(-3px);
-      box-shadow: 0 12px 32px rgba(0,0,0,0.14);
     }
 
     .original-img-wrap {
@@ -204,6 +200,8 @@
       background: #e8e0f0;
       overflow: hidden;
       position: relative;
+      border-radius: 0.4rem;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.10);
     }
 
     .original-img-wrap img {
@@ -289,27 +287,25 @@
     .posters-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
+      gap: 3rem;
     }
 
     .poster-card {
-      border-radius: 0.4rem;
-      overflow: hidden;
-      background: var(--cream);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: transparent;
+      transition: transform 0.3s ease;
       cursor: pointer;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
     }
 
     .poster-card:hover {
       transform: translateY(-3px);
-      box-shadow: 0 12px 32px rgba(0,0,0,0.14);
     }
 
     .poster-img-wrap {
       width: 100%;
       aspect-ratio: 2/3;
       overflow: hidden;
+      border-radius: 0.4rem;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.10);
     }
 
     .poster-img-wrap img {
@@ -355,27 +351,25 @@
     .cards-grid {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      gap: 1.2rem;
+      gap: 2.5rem;
     }
 
     .card-item {
-      border-radius: 0.4rem;
-      overflow: hidden;
-      background: var(--cream);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: transparent;
+      transition: transform 0.3s ease;
       cursor: pointer;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
     }
 
     .card-item:hover {
       transform: translateY(-3px);
-      box-shadow: 0 12px 32px rgba(0,0,0,0.14);
     }
 
     .card-img-wrap {
       width: 100%;
       aspect-ratio: 1/1.4;
       overflow: hidden;
+      border-radius: 0.4rem;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.10);
     }
 
     .card-img-wrap img {
@@ -626,6 +620,7 @@
     <div class="section-header">
       <div>
         <h2 class="section-title">Originale malerier</h2>
+        <p class="section-desc">Originale akvareller hvor levende farver og drømmende motiver finder hinanden — skabt med hænder og hjerte.</p>
       </div>
       <a href="#contact" class="btn btn-secondary">Forespørg om et værk</a>
     </div>
@@ -638,7 +633,7 @@
         </div>
         <div class="original-info">
           <div class="original-title">Abundant Adventures</div>
-          <div class="original-details">290 × 210 mm · Akvarel</div>
+          <div class="original-details">290 × 210 mm · Akvarel · 2021</div>
           <div class="original-price">7.500 kr</div>
         </div>
       </div>
@@ -649,7 +644,7 @@
         </div>
         <div class="original-info">
           <div class="original-title">Butterfly Nectar</div>
-          <div class="original-details">145 × 205 mm · Akvarel</div>
+          <div class="original-details">145 × 205 mm · Akvarel · 2022</div>
           <div class="original-price">1.500 kr</div>
         </div>
       </div>
@@ -660,7 +655,7 @@
         </div>
         <div class="original-info">
           <div class="original-title">Radiant Light</div>
-          <div class="original-details">145 × 205 mm · Akvarel</div>
+          <div class="original-details">145 × 205 mm · Akvarel · 2022</div>
           <div class="original-price">1.500 kr</div>
         </div>
       </div>
@@ -671,7 +666,7 @@
         </div>
         <div class="original-info">
           <div class="original-title">Reminiscent of Summer</div>
-          <div class="original-details">~260 × 180 mm · Akvarel</div>
+          <div class="original-details">~260 × 180 mm · Akvarel · 2023</div>
           <div class="original-price">3.000 kr</div>
         </div>
       </div>
@@ -682,7 +677,7 @@
         </div>
         <div class="original-info">
           <div class="original-title">Song of the Hills</div>
-          <div class="original-details">145 × 205 mm · Akvarel</div>
+          <div class="original-details">145 × 205 mm · Akvarel · 2022</div>
           <div class="original-price">1.500 kr</div>
         </div>
       </div>
@@ -693,7 +688,7 @@
         </div>
         <div class="original-info">
           <div class="original-title">Summer Breeze</div>
-          <div class="original-details">550 × 700 mm · Akvarel</div>
+          <div class="original-details">550 × 700 mm · Akvarel · 2024</div>
           <div class="original-price">5.000 kr</div>
         </div>
       </div>
@@ -704,7 +699,7 @@
         </div>
         <div class="original-info">
           <div class="original-title">Summer in Lazise</div>
-          <div class="original-details">290 × 210 mm · Akvarel</div>
+          <div class="original-details">290 × 210 mm · Akvarel · 2024</div>
           <div class="original-price">3.000 kr</div>
         </div>
       </div>
@@ -715,7 +710,7 @@
         </div>
         <div class="original-info">
           <div class="original-title">Konkylie studie #1</div>
-          <div class="original-details">200 × 200 mm · Akvarel</div>
+          <div class="original-details">200 × 200 mm · Akvarel · 2025</div>
           <div class="original-price">2.000 kr</div>
         </div>
       </div>
@@ -748,7 +743,7 @@
           </div>
           <div class="poster-meta" style="margin-top:0.3rem;">
             <span class="poster-size">A2 · 594 × 420 mm</span>
-            <span class="poster-price">360 kr</span>
+            <span class="poster-price">400 kr</span>
           </div>
         </div>
       </div>
@@ -765,7 +760,7 @@
           </div>
           <div class="poster-meta" style="margin-top:0.3rem;">
             <span class="poster-size">A2 · 594 × 420 mm</span>
-            <span class="poster-price">360 kr</span>
+            <span class="poster-price">400 kr</span>
           </div>
         </div>
       </div>
@@ -782,7 +777,7 @@
           </div>
           <div class="poster-meta" style="margin-top:0.3rem;">
             <span class="poster-size">A2 · 594 × 420 mm</span>
-            <span class="poster-price">360 kr</span>
+            <span class="poster-price">400 kr</span>
           </div>
         </div>
       </div>
@@ -800,7 +795,7 @@
           </div>
           <div class="poster-meta" style="margin-top:0.3rem;">
             <span class="poster-size">A2 · 594 × 420 mm</span>
-            <span class="poster-price">360 kr</span>
+            <span class="poster-price">400 kr</span>
           </div>
         </div>
       </div>
@@ -817,7 +812,7 @@
           </div>
           <div class="poster-meta" style="margin-top:0.3rem;">
             <span class="poster-size">A2 · 594 × 420 mm</span>
-            <span class="poster-price">360 kr</span>
+            <span class="poster-price">400 kr</span>
           </div>
         </div>
       </div>
@@ -834,7 +829,7 @@
           </div>
           <div class="poster-meta" style="margin-top:0.3rem;">
             <span class="poster-size">A2 · 594 × 420 mm</span>
-            <span class="poster-price">360 kr</span>
+            <span class="poster-price">400 kr</span>
           </div>
         </div>
       </div>
@@ -931,15 +926,15 @@
     </div>
     <div class="about-content">
       <div class="section-label">Om kunstneren</div>
-      <h2 class="section-title">Hi, my name is Alberte</h2>
+      <h2 class="section-title">Jeg er Alberte</h2>
       <p class="about-text">
-        But you can call me Birdie. My journey with watercolours started ten years ago in my teenage bedroom, and has since entered spaces like small art shows and independent stores. Through it all, two things have always been present in my work: vibrant colours and nature
+        Men du kan kalde mig Birdie. Min rejse med akvareller startede for 10 år siden på mit teenageværelse og har sidenhen fundet sin vej ind i små kunstudstillinger og uafhængige butikker. To elementer har altid været til stede; smukke farver og magisk natur
       </p>
       <p class="about-text">
-        I believe that art shapes the space it lives in, and in turn, the people who live there. The right piece can lift your mood, your spirit, your day
+        Jeg tror på at kunst kan forme sine omgivelser og derigennem de mennesker som bor der. Det rigtige værk kan løfte dit humør, din sjæl, din dag
       </p>
       <p class="about-text">
-        Don't be a stranger — reach out with any and all inquiries
+        Don't be a stranger — du er altid velkommen til at række ud!
       </p>
     </div>
   </section>
@@ -948,8 +943,8 @@
   <section class="contact" id="contact">
     <div class="contact-left">
       <div class="section-label">Kom i kontakt</div>
-      <h2 class="section-title">Interested in a piece?</h2>
-      <p class="contact-desc">Whether you'd like to buy an original, order a poster or cards, or ask about a commission — I'd love to hear from you. I'll get back to you as soon as possible.</p>
+      <h2 class="section-title">Interesseret i et værk?</h2>
+      <p class="contact-desc">Uanset om du vil købe et original, bestille en plakat eller kort, eller høre om et kommissionsarbejde — vil jeg meget gerne høre fra dig. Jeg vender tilbage hurtigst muligt.</p>
       <div class="contact-detail">
         <div class="contact-icon">✉</div>
         <span>hello@albertehall.art</span>
@@ -1000,7 +995,7 @@
   <!-- FOOTER -->
   <footer>
     <div class="footer-logo">Alberte Hall</div>
-    <div class="footer-copy">© 2026 Alberte Hall · Alle malerier er originale værker</div>
+    <div class="footer-copy">© 2026 Alberte Hall</div>
   </footer>
 
 </body>
