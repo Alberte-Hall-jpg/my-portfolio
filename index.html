@@ -571,7 +571,8 @@
     /* ── NEWS ── */
     .news-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1fr;
+      max-width: 480px; /* så det ikke strækker sig hele vejen */;
       gap: 2rem;
     }
 
@@ -660,21 +661,9 @@
     <div class="news-grid">
 
       <div class="news-card">
-        <div class="news-date">14. juni 2026</div>
-        <div class="news-title">Lyngby Marked</div>
-        <p class="news-text">Find mig på Lyngby Torv med originaler, plakater og kort. Kom forbi og sig hej.</p>
-      </div>
-
-      <div class="news-card">
-        <div class="news-date">Maj 2026</div>
-        <div class="news-title">Ny plakat: Summer Breeze</div>
-        <p class="news-text">Summer Breeze er nu tilgængelig som kunsttryk i A3 og A2.</p>
-      </div>
-
-      <div class="news-card">
-        <div class="news-date">Marts 2026</div>
-        <div class="news-title">Konkylie studie #1</div>
-        <p class="news-text">Et nyt originalt maleri er kommet til samlingen — malet i starten af 2025.</p>
+        <div class="news-date">Sommer 2026</div>
+        <div class="news-title">Hjemmeside</div>
+        <p class="news-text">Min hjemmeside er på vej!</p>
       </div>
 
     </div>
