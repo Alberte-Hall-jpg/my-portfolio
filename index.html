@@ -1002,10 +1002,6 @@
       <h2 class="section-title">Interesseret i et værk?</h2>
       <p class="contact-desc">Uanset om du vil købe et original, bestille en plakat eller kort, eller høre om et kommissionsarbejde — vil jeg meget gerne høre fra dig. Jeg vender tilbage hurtigst muligt.</p>
       <div class="contact-detail">
-        <div class="contact-icon">✉</div>
-        <span>hello@albertehall.art</span>
-      </div>
-      <div class="contact-detail">
         <div class="contact-icon">📍</div>
         <span>Danmark</span>
       </div>
@@ -1021,18 +1017,19 @@
       </div>
     </div>
 
-    <div class="contact-form">
+    <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="f750c9b6-7b8b-4f0a-8ae6-a98e4491ca8f">
       <div class="form-group">
         <label>Dit navn</label>
-        <input type="text" >
+        <input type="text" name="name" required>
       </div>
       <div class="form-group">
         <label>Email</label>
-        <input type="email" >
+        <input type="email" name="email" required>
       </div>
       <div class="form-group">
         <label>Jeg er interesseret i</label>
-        <select>
+        <select name="interesseret_i">
           <option>Et originalt maleri</option>
           <option>En plakat</option>
           <option>Lykønskningskort</option>
@@ -1043,10 +1040,10 @@
       </div>
       <div class="form-group">
         <label>Besked</label>
-        <textarea ></textarea>
+        <textarea name="message" required></textarea>
       </div>
-      <button class="btn btn-primary" style="width:100%; border:none; cursor:pointer; font-family:'DM Sans',sans-serif; padding:0.9rem;">Send besked →</button>
-    </div>
+      <button type="submit" class="btn btn-primary" style="width:100%; border:none; cursor:pointer; font-family:'DM Sans',sans-serif; padding:0.9rem;">Send besked →</button>
+    </form>
   </section>
 
   <!-- FOOTER -->
