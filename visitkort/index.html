@@ -8,8 +8,10 @@
 </head>
 <body>
   <script>
-    // Logger scannet i baggrunden uden at vente på svar (blokerer ikke videresendelsen)
-    fetch("https://script.google.com/macros/s/AKfycbzDLQKNJ4A28W1bbgGLcYfvdSL1gmZ7fDuaJ-7jwI5fJN7XEhAkBV6yZ0LKaMcsfgiv/exec", { mode: "no-cors" }).catch(function () {});
+    // sendBeacon garanterer at beskeden når frem, selvom siden navigerer væk med det samme
+    if (navigator.sendBeacon) {
+      navigator.sendBeacon("https://script.google.com/macros/s/AKfycbzDLQKNJ4A28W1bbgGLcYfvdSL1gmZ7fDuaJ-7jwI5fJN7XEhAkBV6yZ0LKaMcsfgiv/exec", "");
+    }
     window.location.replace("https://albertehall.art/");
   </script>
   <noscript>
