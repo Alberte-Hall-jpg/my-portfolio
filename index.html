@@ -95,6 +95,36 @@
     .btn-secondary:hover { background: var(--sun); border-color: var(--sun); }
     .btn-small { padding: 0.5rem 1.2rem; font-size: 0.82rem; }
 
+    /* ── LANG TOGGLE ── */
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      border: 2px solid var(--ink);
+      border-radius: 100px;
+      overflow: hidden;
+      margin-right: 0.8rem;
+    }
+
+    .lang-btn {
+      border: none;
+      background: transparent;
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      padding: 0.4rem 0.8rem;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .lang-btn.active {
+      background: var(--ink);
+      color: var(--cream);
+    }
+
+    .nav-right { display: flex; align-items: center; }
+
     /* ── HERO ── */
     .hero {
       min-height: 100vh;
@@ -630,22 +660,28 @@
   <nav>
     <div class="nav-logo">Alberte Hall</div>
     <ul class="nav-links">
-      <li><a href="#news">Nyt</a></li>
-      <li><a href="#originals">Originaler</a></li>
-      <li><a href="#posters">Plakater</a></li>
-      <li><a href="#cards">Kort</a></li>
-      <li><a href="#about">Om mig</a></li>
-      <li><a href="#contact">Kontakt</a></li>
+      <li><a href="#news" data-en="News">Nyt</a></li>
+      <li><a href="#originals" data-en="Originals">Originaler</a></li>
+      <li><a href="#posters" data-en="Posters">Plakater</a></li>
+      <li><a href="#cards" data-en="Cards">Kort</a></li>
+      <li><a href="#about" data-en="About">Om mig</a></li>
+      <li><a href="#contact" data-en="Contact">Kontakt</a></li>
     </ul>
-    <a href="#contact" class="btn btn-primary btn-small">Kontakt mig</a>
+    <div class="nav-right">
+      <div class="lang-toggle">
+        <button type="button" class="lang-btn" data-lang="da" onclick="setLang('da')">DA</button>
+        <button type="button" class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+      </div>
+      <a href="#contact" class="btn btn-primary btn-small" data-en="Contact me">Kontakt mig</a>
+    </div>
   </nav>
 
   <!-- HERO -->
   <section class="hero">
-    <span class="hero-tag">Akvarelkunst · håndmalet med kærlighed</span>
-    <h1>Kunst der <em>fylder</em><br>din verden med farve</h1>
+    <span class="hero-tag" data-en="Watercolour art · painted with love">Akvarelkunst · håndmalet med kærlighed</span>
+    <h1 data-en="Art that <em>fills</em><br>your world with colour">Kunst der <em>fylder</em><br>din verden med farve</h1>
     <div class="hero-buttons">
-      <a href="#originals" class="btn btn-primary">Se mine værker ↓</a>
+      <a href="#originals" class="btn btn-primary" data-en="View my work ↓">Se mine værker ↓</a>
     </div>
   </section>
 
@@ -655,15 +691,15 @@
   <section class="section" id="news">
     <div class="section-header">
       <div>
-        <h2 class="section-title">Nyt</h2>
+        <h2 class="section-title" data-en="News">Nyt</h2>
       </div>
     </div>
     <div class="news-grid">
 
       <div class="news-card">
-        <div class="news-date">Sommer 2026</div>
-        <div class="news-title">Hjemmesidenyt</div>
-        <p class="news-text">Min hjemmeside er på vej!</p>
+        <div class="news-date" data-en="Summer 2026">Sommer 2026</div>
+        <div class="news-title" data-en="Website news">Hjemmesidenyt</div>
+        <p class="news-text" data-en="My website is on its way!">Min hjemmeside er på vej!</p>
       </div>
 
     </div>
@@ -673,10 +709,10 @@
   <section class="section" id="originals">
     <div class="section-header">
       <div>
-        <h2 class="section-title">Originale malerier</h2>
-        <p class="section-desc">Originale akvareller hvor levende farver og drømmende motiver finder hinanden — skabt med hænder og hjerte.</p>
+        <h2 class="section-title" data-en="Original paintings">Originale malerier</h2>
+        <p class="section-desc" data-en="Original watercolours where vivid colour and dreamlike motifs meet — made by hand and heart.">Originale akvareller hvor levende farver og drømmende motiver finder hinanden — skabt med hænder og hjerte.</p>
       </div>
-      <a href="#contact" class="btn btn-secondary">Forespørg om et værk</a>
+      <a href="#contact" class="btn btn-secondary" data-en="Enquire about a piece">Forespørg om et værk</a>
     </div>
 
     <div class="originals-grid">
@@ -687,8 +723,8 @@
         </div>
         <div class="original-info">
           <div class="original-title">Abundant Adventures</div>
-          <div class="original-details">290 × 210 mm · Akvarel · 2021</div>
-          <div class="original-price">6.000 kr</div>
+          <div class="original-details" data-en="290 × 210 mm · Watercolour · 2021">290 × 210 mm · Akvarel · 2021</div>
+          <div class="original-price" data-en="€805">6.000 kr</div>
         </div>
       </div>
 
@@ -698,8 +734,8 @@
         </div>
         <div class="original-info">
           <div class="original-title">Butterfly Nectar</div>
-          <div class="original-details">145 × 205 mm · Akvarel · 2022</div>
-          <div class="original-price">1.700 kr</div>
+          <div class="original-details" data-en="145 × 205 mm · Watercolour · 2022">145 × 205 mm · Akvarel · 2022</div>
+          <div class="original-price" data-en="€230">1.700 kr</div>
         </div>
       </div>
 
@@ -709,8 +745,8 @@
         </div>
         <div class="original-info">
           <div class="original-title">Radiant Light</div>
-          <div class="original-details">145 × 205 mm · Akvarel · 2022</div>
-          <div class="original-price">1.700 kr</div>
+          <div class="original-details" data-en="145 × 205 mm · Watercolour · 2022">145 × 205 mm · Akvarel · 2022</div>
+          <div class="original-price" data-en="€230">1.700 kr</div>
         </div>
       </div>
 
@@ -720,8 +756,8 @@
         </div>
         <div class="original-info">
           <div class="original-title">Reminiscent of Summer</div>
-          <div class="original-details">~260 × 180 mm · Akvarel · 2023</div>
-          <div class="original-price">2.700 kr</div>
+          <div class="original-details" data-en="~260 × 180 mm · Watercolour · 2023">~260 × 180 mm · Akvarel · 2023</div>
+          <div class="original-price" data-en="€360">2.700 kr</div>
         </div>
       </div>
 
@@ -731,19 +767,19 @@
         </div>
         <div class="original-info">
           <div class="original-title">Song of the Hills</div>
-          <div class="original-details">145 × 205 mm · Akvarel · 2022</div>
-          <div class="original-price">1.700 kr</div>
+          <div class="original-details" data-en="145 × 205 mm · Watercolour · 2022">145 × 205 mm · Akvarel · 2022</div>
+          <div class="original-price" data-en="€230">1.700 kr</div>
         </div>
       </div>
 
       <div class="original-card">
         <div class="original-img-wrap">
-          <div class="placeholder-painting">Summer Breeze<br><br>Foto kommer snart</div>
+          <div class="placeholder-painting" data-en="Summer Breeze<br><br>Photo coming soon">Summer Breeze<br><br>Foto kommer snart</div>
         </div>
         <div class="original-info">
           <div class="original-title">Summer Breeze</div>
-          <div class="original-details">550 × 700 mm · Akvarel · 2024</div>
-          <div class="original-price">7.000 kr</div>
+          <div class="original-details" data-en="550 × 700 mm · Watercolour · 2024">550 × 700 mm · Akvarel · 2024</div>
+          <div class="original-price" data-en="€940">7.000 kr</div>
         </div>
       </div>
 
@@ -753,19 +789,19 @@
         </div>
         <div class="original-info">
           <div class="original-title">Summer in Lazise</div>
-          <div class="original-details">290 × 210 mm · Akvarel · 2024</div>
-          <div class="original-price">3.500 kr</div>
+          <div class="original-details" data-en="290 × 210 mm · Watercolour · 2024">290 × 210 mm · Akvarel · 2024</div>
+          <div class="original-price" data-en="€470">3.500 kr</div>
         </div>
       </div>
 
       <div class="original-card">
         <div class="original-img-wrap">
-          <div class="placeholder-painting">Konkylie studie #1<br><br>Foto kommer snart</div>
+          <div class="placeholder-painting" data-en="Shell Study #1<br><br>Photo coming soon">Konkylie studie #1<br><br>Foto kommer snart</div>
         </div>
         <div class="original-info">
-          <div class="original-title">Konkylie studie #1</div>
-          <div class="original-details">200 × 200 mm · Akvarel · 2025</div>
-          <div class="original-price">1.700 kr</div>
+          <div class="original-title" data-en="Shell Study #1">Konkylie studie #1</div>
+          <div class="original-details" data-en="200 × 200 mm · Watercolour · 2025">200 × 200 mm · Akvarel · 2025</div>
+          <div class="original-price" data-en="€230">1.700 kr</div>
         </div>
       </div>
 
@@ -776,11 +812,11 @@
   <section class="section section-alt" id="posters">
     <div class="section-header">
       <div>
-        <div class="section-label">Kunsttryk</div>
-        <h2 class="section-title">Plakater</h2>
-        <p class="section-desc">Højkvalitets kunsttryk af originale malerier. Fås i A3 (420 × 290 mm) og A2 (594 × 420 mm), trykt og sendt med omhu.</p>
+        <div class="section-label" data-en="Art prints">Kunsttryk</div>
+        <h2 class="section-title" data-en="Posters">Plakater</h2>
+        <p class="section-desc" data-en="High-quality prints of original paintings. Available in A3 (420 × 290 mm) and A2 (594 × 420 mm), printed and shipped with care.">Højkvalitets kunsttryk af originale malerier. Fås i A3 (420 × 290 mm) og A2 (594 × 420 mm), trykt og sendt med omhu.</p>
       </div>
-      <a href="#contact" class="btn btn-secondary">Bestil en plakat</a>
+      <a href="#contact" class="btn btn-secondary" data-en="Order a poster">Bestil en plakat</a>
     </div>
 
     <div class="posters-grid">
@@ -793,11 +829,11 @@
           <div class="poster-title">Abundant Adventures</div>
           <div class="poster-meta">
             <span class="poster-size">A3</span>
-            <span class="poster-price">300 kr</span>
+            <span class="poster-price" data-en="€34">250 kr</span>
           </div>
           <div class="poster-meta" style="margin-top:0.3rem;">
             <span class="poster-size">A2</span>
-            <span class="poster-price">400 kr</span>
+            <span class="poster-price" data-en="€47">350 kr</span>
           </div>
         </div>
       </div>
@@ -810,11 +846,11 @@
           <div class="poster-title">Butterfly Nectar</div>
           <div class="poster-meta">
             <span class="poster-size">A3</span>
-            <span class="poster-price">300 kr</span>
+            <span class="poster-price" data-en="€34">250 kr</span>
           </div>
           <div class="poster-meta" style="margin-top:0.3rem;">
             <span class="poster-size">A2</span>
-            <span class="poster-price">400 kr</span>
+            <span class="poster-price" data-en="€47">350 kr</span>
           </div>
         </div>
       </div>
@@ -827,11 +863,11 @@
           <div class="poster-title">Radiant Light</div>
           <div class="poster-meta">
             <span class="poster-size">A3</span>
-            <span class="poster-price">300 kr</span>
+            <span class="poster-price" data-en="€34">250 kr</span>
           </div>
           <div class="poster-meta" style="margin-top:0.3rem;">
             <span class="poster-size">A2</span>
-            <span class="poster-price">400 kr</span>
+            <span class="poster-price" data-en="€47">350 kr</span>
           </div>
         </div>
       </div>
@@ -845,11 +881,11 @@
           <div class="poster-title">Reminiscent of Summer</div>
           <div class="poster-meta">
             <span class="poster-size">A3</span>
-            <span class="poster-price">300 kr</span>
+            <span class="poster-price" data-en="€34">250 kr</span>
           </div>
           <div class="poster-meta" style="margin-top:0.3rem;">
             <span class="poster-size">A2</span>
-            <span class="poster-price">400 kr</span>
+            <span class="poster-price" data-en="€47">350 kr</span>
           </div>
         </div>
       </div>
@@ -862,11 +898,11 @@
           <div class="poster-title">Song of the Hills</div>
           <div class="poster-meta">
             <span class="poster-size">A3</span>
-            <span class="poster-price">300 kr</span>
+            <span class="poster-price" data-en="€34">250 kr</span>
           </div>
           <div class="poster-meta" style="margin-top:0.3rem;">
             <span class="poster-size">A2</span>
-            <span class="poster-price">400 kr</span>
+            <span class="poster-price" data-en="€47">350 kr</span>
           </div>
         </div>
       </div>
@@ -879,11 +915,11 @@
           <div class="poster-title">Summer in Lazise</div>
           <div class="poster-meta">
             <span class="poster-size">A3</span>
-            <span class="poster-price">300 kr</span>
+            <span class="poster-price" data-en="€34">250 kr</span>
           </div>
           <div class="poster-meta" style="margin-top:0.3rem;">
             <span class="poster-size">A2</span>
-            <span class="poster-price">400 kr</span>
+            <span class="poster-price" data-en="€47">350 kr</span>
           </div>
         </div>
       </div>
@@ -895,11 +931,11 @@
   <section class="section" id="cards">
     <div class="section-header">
       <div>
-        <div class="section-label">Kunsttryk</div>
-        <h2 class="section-title">Lykønskningskort</h2>
-        <p class="section-desc">Kort med tryk af originale motiver (105 × 148 mm) inklusiv kuvert. Kortene er 4-sidede og blanke indeni med plads til alle dine lykønskninger!</p>
+        <div class="section-label" data-en="Art prints">Kunsttryk</div>
+        <h2 class="section-title" data-en="Greeting cards">Lykønskningskort</h2>
+        <p class="section-desc" data-en="Cards printed with original motifs (105 × 148 mm), envelope included. Four-sided and blank inside, with room for all your wishes!">Kort med tryk af originale motiver (105 × 148 mm) inklusiv kuvert. Kortene er 4-sidede og blanke indeni med plads til alle dine lykønskninger!</p>
       </div>
-      <a href="#contact" class="btn btn-secondary">Bestil kort</a>
+      <a href="#contact" class="btn btn-secondary" data-en="Order cards">Bestil kort</a>
     </div>
 
     <div class="cards-grid">
@@ -911,10 +947,10 @@
         </div>
         <div class="card-info">
           <div class="card-title">Abundant Mushrooms</div>
-          <p style="font-size: 0.72rem; color: var(--muted); line-height: 1.4; margin-bottom: 0.4rem;">Sættet består af 3 kort, som til sammen udgør skovbunden i værket 'Abundant Adventures'</p>
+          <p style="font-size: 0.72rem; color: var(--muted); line-height: 1.4; margin-bottom: 0.4rem;" data-en="The set of 3 cards together forms the forest floor from 'Abundant Adventures'">Sættet består af 3 kort, som til sammen udgør skovbunden i værket 'Abundant Adventures'</p>
           <div class="card-meta">
-            <span class="card-note">Sæt · blank indeni</span>
-            <span class="card-price">75 kr</span>
+            <span class="card-note" data-en="Set · blank inside">Sæt · blank indeni</span>
+            <span class="card-price" data-en="€10">75 kr</span>
           </div>
         </div>
       </div>
@@ -925,10 +961,10 @@
         </div>
         <div class="card-info">
           <div class="card-title">Notes of Purple</div>
-          <p style="font-size: 0.72rem; color: var(--muted); line-height: 1.4; margin-bottom: 0.4rem;">Sættet består af Butterfly Nectar, Radiant Light og Song of the Hills</p>
+          <p style="font-size: 0.72rem; color: var(--muted); line-height: 1.4; margin-bottom: 0.4rem;" data-en="The set includes Butterfly Nectar, Radiant Light and Song of the Hills">Sættet består af Butterfly Nectar, Radiant Light og Song of the Hills</p>
           <div class="card-meta">
-            <span class="card-note">Sæt · blank indeni</span>
-            <span class="card-price">75 kr</span>
+            <span class="card-note" data-en="Set · blank inside">Sæt · blank indeni</span>
+            <span class="card-price" data-en="€10">75 kr</span>
           </div>
         </div>
       </div>
@@ -940,8 +976,8 @@
         <div class="card-info">
           <div class="card-title">Butterfly Nectar</div>
           <div class="card-meta">
-            <span class="card-note">Enkelt · blank indeni</span>
-            <span class="card-price">30 kr</span>
+            <span class="card-note" data-en="Single · blank inside">Enkelt · blank indeni</span>
+            <span class="card-price" data-en="€4">30 kr</span>
           </div>
         </div>
       </div>
@@ -953,8 +989,8 @@
         <div class="card-info">
           <div class="card-title">Radiant Light</div>
           <div class="card-meta">
-            <span class="card-note">Enkelt · blank indeni</span>
-            <span class="card-price">30 kr</span>
+            <span class="card-note" data-en="Single · blank inside">Enkelt · blank indeni</span>
+            <span class="card-price" data-en="€4">30 kr</span>
           </div>
         </div>
       </div>
@@ -966,8 +1002,8 @@
         <div class="card-info">
           <div class="card-title">Song of the Hills</div>
           <div class="card-meta">
-            <span class="card-note">Enkelt · blank indeni</span>
-            <span class="card-price">30 kr</span>
+            <span class="card-note" data-en="Single · blank inside">Enkelt · blank indeni</span>
+            <span class="card-price" data-en="€4">30 kr</span>
           </div>
         </div>
       </div>
@@ -981,15 +1017,15 @@
   <img src="images/Portrait.jpg" alt="Alberte Hall" style="width:100%; height:100%; object-fit:cover; object-position: center top; border-radius:1.2rem;">
     </div>
     <div class="about-content">
-      <div class="section-label">Om kunstneren</div>
-      <h2 class="section-title">Jeg er Alberte</h2>
-      <p class="about-text">
+      <div class="section-label" data-en="About the artist">Om kunstneren</div>
+      <h2 class="section-title" data-en="I'm Alberte">Jeg er Alberte</h2>
+      <p class="about-text" data-en="But you can call me Birdie. My journey with watercolours started ten years ago in my teenage bedroom, and has since found its way into small art exhibitions and independent stores. Two elements have always been present: vibrant colour and magical nature">
         Men du kan kalde mig Birdie. Min rejse med akvareller startede for 10 år siden på mit teenageværelse og har sidenhen fundet sin vej ind i små kunstudstillinger og uafhængige butikker. To elementer har altid været til stede; smukke farver og magisk natur
       </p>
-      <p class="about-text">
+      <p class="about-text" data-en="I believe art can shape its surroundings, and through that, the people who live there. The right piece can lift your mood, your spirit, your day">
         Jeg tror på at kunst kan forme sine omgivelser og derigennem de mennesker som bor der. Det rigtige værk kan løfte dit humør, din sjæl, din dag
       </p>
-      <p class="about-text">
+      <p class="about-text" data-en="Don't be a stranger - reach out with any enquiries below!">
         Don't be a stranger — du er altid velkommen til at række ud!
       </p>
     </div>
@@ -998,16 +1034,16 @@
   <!-- CONTACT -->
   <section class="contact" id="contact">
     <div class="contact-left">
-      <div class="section-label">Kom i kontakt</div>
-      <h2 class="section-title">Interesseret i et værk?</h2>
-      <p class="contact-desc">Uanset om du vil købe et original, bestille en plakat eller kort, eller høre om et kommissionsarbejde — vil jeg meget gerne høre fra dig. Jeg vender tilbage hurtigst muligt.</p>
+      <div class="section-label" data-en="Get in touch">Kom i kontakt</div>
+      <h2 class="section-title" data-en="Interested in a piece?">Interesseret i et værk?</h2>
+      <p class="contact-desc" data-en="Whether you'd like to buy an original, order a poster or cards, or ask about a commission — I'd love to hear from you. I'll get back to you as soon as possible.">Uanset om du vil købe et original, bestille en plakat eller kort, eller høre om et kommissionsarbejde — vil jeg meget gerne høre fra dig. Jeg vender tilbage hurtigst muligt.</p>
       <div class="contact-detail">
         <div class="contact-icon">📍</div>
-        <span>Danmark</span>
+        <span data-en="Denmark">Danmark</span>
       </div>
       <div class="contact-detail">
         <div class="contact-icon">📦</div>
-        <span>Sender til hele verden</span>
+        <span data-en="Ships worldwide">Sender til hele verden</span>
       </div>
       <div class="contact-detail">
         <div class="contact-icon">
@@ -1015,34 +1051,38 @@
         </div>
         <a href="https://www.instagram.com/alberte_hall/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">@alberte_hall</a>
       </div>
+      <div class="contact-detail">
+        <div class="contact-icon">✉</div>
+        <a href="mailto:hello@albertehall.art" style="color: inherit; text-decoration: none;">hello@albertehall.art</a>
+      </div>
     </div>
 
     <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
       <input type="hidden" name="access_key" value="f750c9b6-7b8b-4f0a-8ae6-a98e4491ca8f">
       <div class="form-group">
-        <label>Dit navn</label>
+        <label data-en="Your name">Dit navn</label>
         <input type="text" name="name" required>
       </div>
       <div class="form-group">
-        <label>Email</label>
+        <label data-en="Email">Email</label>
         <input type="email" name="email" required>
       </div>
       <div class="form-group">
-        <label>Jeg er interesseret i</label>
+        <label data-en="I'm interested in">Jeg er interesseret i</label>
         <select name="interesseret_i">
-          <option>Et originalt maleri</option>
-          <option>En plakat</option>
-          <option>Lykønskningskort</option>
-          <option>Kommissionsarbejde</option>
-          <option>Samarbejde</option>
-          <option>Andet</option>
+          <option data-en="An original painting">Et originalt maleri</option>
+          <option data-en="A poster">En plakat</option>
+          <option data-en="Greeting cards">Lykønskningskort</option>
+          <option data-en="Commission work">Kommissionsarbejde</option>
+          <option data-en="Collaboration">Samarbejde</option>
+          <option data-en="Other">Andet</option>
         </select>
       </div>
       <div class="form-group">
-        <label>Besked</label>
+        <label data-en="Message">Besked</label>
         <textarea name="message" required></textarea>
       </div>
-      <button type="submit" class="btn btn-primary" style="width:100%; border:none; cursor:pointer; font-family:'DM Sans',sans-serif; padding:0.9rem;">Send besked →</button>
+      <button type="submit" class="btn btn-primary" style="width:100%; border:none; cursor:pointer; font-family:'DM Sans',sans-serif; padding:0.9rem;" data-en="Send message →">Send besked →</button>
     </form>
   </section>
 
@@ -1053,5 +1093,29 @@
   </footer>
 
   <script defer src="/_vercel/insights/script.js"></script>
+
+  <script>
+    function setLang(lang) {
+      document.querySelectorAll('[data-en]').forEach(function (el) {
+        if (!el.hasAttribute('data-da')) {
+          el.setAttribute('data-da', el.innerHTML);
+        }
+        el.innerHTML = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-da');
+      });
+      document.documentElement.lang = lang === 'en' ? 'en' : 'da';
+      document.querySelectorAll('.lang-btn').forEach(function (btn) {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+      });
+      try { localStorage.setItem('preferredLang', lang); } catch (e) {}
+    }
+
+    (function () {
+      var saved;
+      try { saved = localStorage.getItem('preferredLang'); } catch (e) {}
+      var browserLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+      var lang = saved || (browserLang.indexOf('da') === 0 ? 'da' : 'en');
+      setLang(lang);
+    })();
+  </script>
 </body>
 </html>
