@@ -601,8 +601,8 @@
     /* ── NEWS ── */
     .news-grid {
       display: grid;
-      grid-template-columns: 1fr;
-      max-width: 480px; /* så det ikke strækker sig hele vejen */;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      max-width: 900px;
       gap: 2rem;
     }
 
@@ -695,6 +695,12 @@
       </div>
     </div>
     <div class="news-grid">
+
+      <div class="news-card">
+        <div class="news-date" data-en="August 2026">August 2026</div>
+        <div class="news-title" data-en="New painting">Nyt maleri</div>
+        <p class="news-text" data-en="A photo of Shell Study #1 is now available.">Billedet af Konkylie studie #1 er nu tilgængeligt.</p>
+      </div>
 
       <div class="news-card">
         <div class="news-date" data-en="Summer 2026">Sommer 2026</div>
@@ -795,10 +801,10 @@
       </div>
 
       <div class="original-card">
-        <div class="original-img-wrap">
-          <div class="placeholder-painting" data-en="Shell Study #1<br><br>Photo coming soon">Konkylie studie #1<br><br>Foto kommer snart</div>
+        <div class="original-img-wrap" style="aspect-ratio: 1/1;">
+          <img src="images/Paintings/Konkylie_studie_%231.png" alt="Konkylie studie #1">
         </div>
-        <div class="original-info">
+        <div class="original-info" style="margin-top: 33.33%;">
           <div class="original-title" data-en="Shell Study #1">Konkylie studie #1</div>
           <div class="original-details" data-en="200 × 200 mm · Watercolour · 2025">200 × 200 mm · Akvarel · 2025</div>
           <div class="original-price" data-en="€230">1.700 kr</div>
